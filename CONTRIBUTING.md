@@ -50,6 +50,7 @@ Die verbindlichen Regeln stehen in [CLAUDE.md](CLAUDE.md). Kurzfassung:
 
 ## Vor dem Pull Request prüfen
 
+- [ ] `npm test` läuft ohne Fehler (läuft auf GitHub auch automatisch)
 - [ ] Alle geänderten Seiten lokal angesehen – auch in Handy-Breite (ca. 375 px)
 - [ ] Keine Fehler in der Browser-Konsole
 - [ ] Neue Fotos: Vorschau mit `npm run fotos -- --vorschau <name>` kontrolliert, jedes

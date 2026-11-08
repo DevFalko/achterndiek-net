@@ -3,6 +3,7 @@ Allow: /
 # Interne Projektdateien (Doku, Skripte) nicht als Website-Inhalt crawlen
 Disallow: /docs/
 Disallow: /scripts/
+Disallow: /tests/
 Disallow: /README.md
 Disallow: /CONTRIBUTING.md
 Disallow: /CLAUDE.md

@@ -46,6 +46,26 @@ python3 scripts/server.py
 
 Dann <http://localhost:8000> öffnen (oder `npm start`).
 
+## Tests
+
+```bash
+npm install   # einmalig
+npm test
+```
+
+Die Tests liegen in `tests/` und laufen ohne Zusatzpakete (Node-Testrunner):
+
+- **`website.test.mjs`** – interne Links und Anker, Canonical/Open Graph/Sitemap, keine externen
+  Ressourcen, Alt-Texte, keine Telefonnummern, gültige Strukturdaten, Kartenpunkte der Gruppen
+- **`fotos.test.mjs`** – Verpixelung funktioniert; jede Box aus `scripts/fotos.json` ist im
+  veröffentlichten Bild wirklich verpixelt; keine Metadaten (EXIF/GPS). Liegen die Originale in
+  `assets/`, wird zusätzlich alles neu erzeugt und mit den Bildern im Repo verglichen – wichtig
+  nach einem sharp-Update.
+- **`server.test.mjs`** – lokale Vorschau liefert Adressen ohne `.html` wie GitHub Pages
+
+Auf GitHub laufen die Tests bei jedem Push und Pull Request automatisch
+(`.github/workflows/tests.yml`, ohne den Vergleich mit den Originalen).
+
 ## Häufige Änderungen
 
 ### Gruppe hinzufügen oder ändern

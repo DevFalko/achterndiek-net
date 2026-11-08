@@ -1,0 +1,24 @@
+# Führt die Tests bei jedem Push auf main und bei jedem Pull Request aus.
+# Die Originalfotos (assets/) liegen nicht im Repo – der Vergleich mit ihnen wird hier übersprungen
+# und läuft nur lokal mit `npm test`.
+name: Tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm test

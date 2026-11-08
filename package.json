@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "fotos": "node scripts/fotos.mjs",
-    "start": "python3 scripts/server.py"
+    "start": "python3 scripts/server.py",
+    "test": "node --test \"tests/*.test.mjs\""
   },
   "devDependencies": {
     "sharp": "0.35.5"
