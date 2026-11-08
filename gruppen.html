@@ -2,6 +2,7 @@
 <html lang="de">
 <head>
   <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'; frame-src 'none'">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Pfadfindergruppen in Bremen, Hamburg &amp; Niedersachsen – Achter'n Diek</title>
   <meta name="description" content="Alle Stämme und Gruppen der Landesmark Achter&#x27;n Diek mit Karte: Bremen, Hamburg, Stuhr, Weyhe, Schwanewede, Scheeßel, Bremervörde, Leer, Hoya, Twistringen, Bruchhausen-Vilsen, Börnsen, Hohenwestedt.">
@@ -72,10 +73,10 @@
         <h2 id="karte-h">Unsere Gruppen auf der Karte</h2>
         <p>Tippe auf einen Punkt, um zur Gruppe zu springen. Mit den Gau-Knöpfen oben zoomst du in die Region.</p>
         <ul class="legend">
-          <li><i style="background:var(--c-bremen)"></i>Gau Bremen</li>
-          <li><i style="background:var(--c-holsatia)"></i>Gau Holsatia</li>
-          <li><i style="background:var(--c-chauken)"></i>Gau Chauken</li>
-          <li><i style="background:var(--c-weserland)"></i>Gau Weserland</li>
+          <li><i class="legend--bremen"></i>Gau Bremen</li>
+          <li><i class="legend--holsatia"></i>Gau Holsatia</li>
+          <li><i class="legend--chauken"></i>Gau Chauken</li>
+          <li><i class="legend--weserland"></i>Gau Weserland</li>
         </ul>
       </div>
       <div class="map" id="karte">
@@ -109,7 +110,7 @@
           <h3>Heinrich von Zütphen</h3>
           <span class="place">Bremen-Arbergen</span>
           <span class="church">Kirchengemeinde St. Johannis Arbergen</span>
-          <span class="links"><a href="http://stammhvz.de">stammhvz.de</a><a href="mailto:stafue@stammhvz.de">E-Mail</a></span>
+          <span class="links"><a href="mailto:stafue@stammhvz.de">E-Mail</a></span>
         </li>
         <li class="group" id="g-kopernikus" data-lat="53.115" data-lon="8.907">
           <span class="type">Stamm</span>
@@ -320,7 +321,7 @@
     </section>
 
     <p class="empty" id="empty">Keine Gruppe gefunden. Schreib uns gern über die <a href="kontakt">Kontaktseite</a> – wir helfen weiter.</p>
-    <p style="padding-block:1rem 3rem;color:var(--muted)">Keine Gruppe in deiner Nähe? <a href="mitmachen#siedeln">Gründet eine – wir helfen beim Siedeln.</a> Fehlt eine Gruppe oder stimmt etwas nicht? <a href="kontakt">Sag uns Bescheid.</a></p>
+    <p class="muted-foot">Keine Gruppe in deiner Nähe? <a href="mitmachen#siedeln">Gründet eine – wir helfen beim Siedeln.</a> Fehlt eine Gruppe oder stimmt etwas nicht? <a href="kontakt">Sag uns Bescheid.</a></p>
   </div>
 </main>
 

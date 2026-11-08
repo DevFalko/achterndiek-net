@@ -514,3 +514,24 @@ p { margin: 0 0 1em; text-wrap: pretty; }
   .site-header nav, .filter, .dike, .actions { display: none !important; }
   body { background: #fff; }
 }
+
+/* Hilfsklassen statt Inline-Styles (die Content-Security-Policy erlaubt keine style-Attribute) */
+.items-start { align-items: start; }
+.gap-wide { gap: clamp(2rem, 5vw, 4rem); }
+.card--dark { background: var(--navy-2); border-color: transparent; }
+.card--center { text-align: center; padding: 2.5rem 1.5rem; }
+.quote--plain { border: 0; padding: 0; margin: 0 0 .5rem; }
+.text-soft { color: #b9c6d8; }
+.muted-flush { color: var(--muted); margin: 0; }
+.muted-foot { padding-block: 1rem 3rem; color: var(--muted); }
+.muted-note { margin-top: 2.5rem; color: var(--muted); }
+.mt-2 { margin-top: 2rem; }
+.mb-15 { margin-bottom: 1.5rem; }
+.mb-25 { margin-bottom: 2.5rem; }
+h1.h1--small { font-size: clamp(2.2rem, 5vw, 3.2rem); }
+.page-head--tall { min-height: 70vh; }
+.logo-lg { max-width: 300px; justify-self: center; }
+.legend--bremen { background: var(--c-bremen); }
+.legend--holsatia { background: var(--c-holsatia); }
+.legend--chauken { background: var(--c-chauken); }
+.legend--weserland { background: var(--c-weserland); }

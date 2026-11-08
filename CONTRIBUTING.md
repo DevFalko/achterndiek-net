@@ -34,6 +34,9 @@ Die verbindlichen Regeln stehen in [CLAUDE.md](CLAUDE.md). Kurzfassung:
 
 - **Kein Build-Schritt, kein Framework.** Reines HTML/CSS, JavaScript nur wo nötig
   (`js/`), ohne Bibliotheken.
+- **Keine Inline-Styles oder -Skripte** (`style="…"`, `<style>`, `onclick=…`): Die
+  Content-Security-Policy blockiert sie. Klasse in `css/style.css` bzw. Code in `js/` anlegen.
+  Details: [docs/SECURITY.md](docs/SECURITY.md).
 - **Kopf und Fuß stehen in jeder Seite.** Navigation oder Footer ändern heißt: alle
   HTML-Dateien anpassen (inkl. `404.html`, `impressum.html`, `datenschutz.html`).
 - **Links** so schreiben wie in den bestehenden Seiten; auf der `404.html` absolut (`/…`),
