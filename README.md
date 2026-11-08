@@ -40,7 +40,7 @@ alle Seiten anpassen (z. B. mit Suchen & Ersetzen).
 ## Lokal ansehen
 
 ```bash
-python3 -m http.server 8000
+python3 server.py
 ```
 
 Dann <http://localhost:8000> öffnen (oder `npm start`).
