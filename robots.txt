@@ -1,4 +1,11 @@
 User-agent: *
 Allow: /
+# Interne Projektdateien (Doku, Skripte) nicht als Website-Inhalt crawlen
+Disallow: /docs/
+Disallow: /scripts/
+Disallow: /README.md
+Disallow: /CLAUDE.md
+Disallow: /package.json
+Disallow: /package-lock.json
 
 Sitemap: https://achterndiek.net/sitemap.xml

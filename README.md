@@ -102,6 +102,11 @@ Jeder Push auf `main` wird von GitHub Pages automatisch veröffentlicht (ca. 1 M
   `devfalko.github.io`. **Keinen** Wildcard-Eintrag (`*.achterndiek.net`) anlegen.
 - Mail läuft weiter über Host Europe (MX/SPF nicht anfassen).
 
+## SEO
+
+Strategie, Audit-Ergebnisse, bewusste Entscheidungen und Maßnahmenplan: [docs/SEO.md](docs/SEO.md).
+Dort steht auch die Checkliste für neue Seiten (Titel, Beschreibung, Canonical, Open Graph, Sitemap).
+
 ## Rechtliches
 
 - **Impressum:** Anbieterin ist die CPD e.V.; Angaben aus deren Impressum übernommen.
