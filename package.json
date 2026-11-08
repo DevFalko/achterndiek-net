@@ -1,0 +1,13 @@
+{
+  "name": "achterndiek-net",
+  "private": true,
+  "description": "Website der CPD-Landesmark Achter'n Diek",
+  "type": "module",
+  "scripts": {
+    "fotos": "node scripts/fotos.mjs",
+    "start": "python3 -m http.server 8000"
+  },
+  "devDependencies": {
+    "sharp": "0.33.5"
+  }
+}
