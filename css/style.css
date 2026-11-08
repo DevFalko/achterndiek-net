@@ -37,7 +37,7 @@
 html {
   -webkit-text-size-adjust: 100%; scroll-behavior: smooth;
   /* Dezente Scrollbar: transparente Spur, halbtransparenter Griff (Firefox, Chrome/Edge ≥ 121) */
-  scrollbar-color: rgb(12 40 71 / .35) transparent;
+  scrollbar-color: rgb(12 40 71 / .43) transparent;
 }
 body {
   margin: 0;
