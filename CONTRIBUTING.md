@@ -16,7 +16,7 @@ Die verbindlichen Regeln stehen in [CLAUDE.md](CLAUDE.md). Kurzfassung:
 ## Voraussetzungen
 
 - Python 3 für die lokale Vorschau
-- Node.js ≥ 20 und `npm install` – nur für das Bild-Skript (sharp)
+- Node.js ≥ 20.9 und `npm install` – nur für das Bild-Skript (sharp)
 - ffmpeg – nur für das Header-Video
 - Die Originale in `assets/` sind nicht im Repo. Wer Fotos oder das Video neu erzeugen will,
   bekommt sie über die Landesmarkführung.
