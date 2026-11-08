@@ -1,0 +1,15 @@
+# Dependabot: monatliche Update-PRs für npm (sharp) und die GitHub Actions.
+# Kostenlos für öffentliche Repos. Jeder PR wird von den Tests geprüft (.github/workflows/tests.yml);
+# bei sharp-Updates zusätzlich lokal `npm test` mit den Originalen in assets/ laufen lassen.
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: monthly
+    open-pull-requests-limit: 3
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
+    open-pull-requests-limit: 3
