@@ -292,6 +292,48 @@ p { margin: 0 0 1em; text-wrap: pretty; }
 .group .links a { overflow-wrap: anywhere; }
 .group .hint { color: var(--muted); font-size: .95rem; margin-top: .5rem; }
 .empty { display: none; padding: 3rem 0; color: var(--muted); }
+.group .note {
+  font-size: .9rem; color: #7a5a00; background: var(--gold-soft);
+  align-self: flex-start; padding: .15rem .5rem; border-radius: 6px; margin-bottom: .2rem;
+}
+.group { scroll-margin-top: 6rem; }
+.group.flash { animation: flash 1.6s ease; }
+@keyframes flash { 0%, 40% { box-shadow: 0 0 0 4px var(--gold); } 100% { box-shadow: 0 0 0 0 transparent; } }
+
+/* Karte */
+:root { --c-bremen: #d0312d; --c-holsatia: #1663ad; --c-chauken: #e0a100; --c-weserland: #2e9e4f; }
+.map-box {
+  display: grid; grid-template-columns: 1fr 1.5fr; gap: 2rem; align-items: center;
+  padding-block: 2.5rem 1rem;
+}
+.map-box h2 { font-size: clamp(1.5rem, 3vw, 2rem); }
+.map-box p { color: var(--muted); }
+.legend { list-style: none; padding: 0; margin: 1rem 0 0; display: grid; gap: .4rem; font-size: 1rem; }
+.legend i { display: inline-block; width: .8rem; height: .8rem; border-radius: 50%; margin-right: .55rem; vertical-align: -.05em; box-shadow: 0 0 0 2px #fff; }
+.map {
+  position: relative; aspect-ratio: 1000 / 880; background: #dfe9f2;
+  border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden;
+}
+.map-svg { display: block; width: 100%; height: 100%; }
+.map .land { fill: #eee8dc; stroke: #fff; stroke-width: 1.2; vector-effect: non-scaling-stroke; }
+.map .land--ours { fill: var(--paper); stroke: #c9bfa9; }
+.map .sea { fill: #7d9bb8; font: italic 600 22px var(--font-body); letter-spacing: .15em; }
+.map .city { fill: var(--muted); font: 600 22px var(--font-head); }
+.map .dot circle { stroke: #fff; cursor: pointer; transition: opacity .2s; }
+.map .dot--bremen circle { fill: var(--c-bremen); }
+.map .dot--holsatia circle { fill: var(--c-holsatia); }
+.map .dot--chauken circle { fill: var(--c-chauken); }
+.map .dot--weserland circle { fill: var(--c-weserland); }
+.map .dot:hover circle, .map .dot:focus circle { stroke: var(--navy); }
+.map .dot:focus { outline: none; }
+.map .dot[hidden] { display: none; }
+.map-tip {
+  position: absolute; transform: translate(-50%, calc(-100% - 14px)); pointer-events: none;
+  background: var(--navy); color: #fff; padding: .45rem .7rem; border-radius: 8px;
+  font-size: .9rem; line-height: 1.3; white-space: nowrap; text-align: center;
+  box-shadow: 0 6px 18px rgb(12 40 71 / .25);
+}
+.map-tip b { display: block; font-family: var(--font-head); }
 
 /* ---------- Mitmachen ---------- */
 .stage { border-top: 6px solid var(--blue); }
@@ -318,6 +360,17 @@ p { margin: 0 0 1em; text-wrap: pretty; }
   border-radius: 50%; background: var(--gold); border: 2px solid var(--sand);
 }
 .timeline b { font: 800 1.1rem/1 var(--font-head); color: var(--navy); display: block; margin-bottom: .3rem; }
+
+.song-wrap { display: grid; grid-template-columns: 1fr 1.2fr; gap: clamp(2rem, 5vw, 4rem); align-items: start; }
+.song { display: grid; gap: 1.4rem; font-size: 1.12rem; line-height: 1.55; }
+.song p { margin: 0; }
+.song-ref { background: var(--navy); color: #fff; border-radius: var(--radius); padding: 1.3rem 1.5rem; font-weight: 600; }
+.song-ref .song-label { color: var(--gold); }
+.song-label { display: block; font: 700 .78rem/1 var(--font-head); letter-spacing: .12em; text-transform: uppercase; color: var(--blue); margin-bottom: .5rem; }
+.song-chords { font-size: 1rem; }
+.song-chords b { font-family: var(--font-head); color: var(--blue); letter-spacing: .04em; }
+.song-note, .song-credit { font-size: .95rem; color: var(--muted); }
+.song-credit { border-top: 1px solid var(--line); padding-top: .8rem; }
 
 .prose { max-width: 44rem; }
 .prose h2 { font-size: 1.6rem; margin-top: 2.2rem; }
@@ -371,7 +424,7 @@ p { margin: 0 0 1em; text-wrap: pretty; }
   .hero--video { min-height: 88vh; }
   .hero-shade { background: linear-gradient(0deg, rgb(7 26 48 / .9) 10%, rgb(7 26 48 / .55) 100%); }
   .hero-meta span { display: none; }
-  .split, .grid--2, .grid--3 { grid-template-columns: 1fr; }
+  .split, .grid--2, .grid--3, .map-box, .song-wrap { grid-template-columns: 1fr; }
   .gau-head { grid-template-columns: 110px 1fr; gap: 1rem; }
   .nav {
     flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none;
