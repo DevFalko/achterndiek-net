@@ -1,0 +1,63 @@
+{
+  "_hinweis": "Quelle relativ zu assets/ (nicht im Repo). Boxen in 'verpixeln' als [x0, y0, x1, y1] relativ zur Bildgröße (0..1). Jedes erkennbare Gesicht MUSS hier eingetragen sein – siehe CLAUDE.md / README.",
+  "fotos": [
+    {
+      "quelle": "pfila26/F47A2664.JPG",
+      "name": "foto/pfila26-runde",
+      "verpixeln": [
+        [0.02, 0.455, 0.065, 0.495],
+        [0.055, 0.465, 0.18, 0.56],
+        [0.27, 0.49, 0.4, 0.56],
+        [0.37, 0.44, 0.395, 0.47],
+        [0.41, 0.458, 0.437, 0.487],
+        [0.455, 0.495, 0.5, 0.54],
+        [0.032, 0.6, 0.062, 0.637],
+        [0.248, 0.59, 0.278, 0.632],
+        [0.5, 0.488, 0.76, 0.538],
+        [0.75, 0.483, 1.0, 0.58],
+        [0.68, 0.518, 0.805, 0.572],
+        [0.503, 0.593, 0.537, 0.627],
+        [0.48, 0.53, 0.56, 0.57],
+        [0.95, 0.53, 1.0, 0.61]
+      ]
+    },
+    {
+      "quelle": "pfila26/F47A2668.JPG",
+      "name": "foto/pfila26-lagermast",
+      "verpixeln": [
+        [0.787, 0.58, 0.803, 0.605]
+      ]
+    },
+    {
+      "quelle": "pfila26/F47A2671.JPG",
+      "name": "foto/pfila26-kueche"
+    },
+    {
+      "quelle": "pfila26/F47A2604.JPG",
+      "name": "foto/pfila26-haengematte"
+    },
+    {
+      "quelle": "pfila26/F47A2672.JPG",
+      "name": "foto/pfila26-feuerholz"
+    },
+    {
+      "quelle": "pfila26/dji_fly_20260524_211542_0104_1779650907903_photo.jpg",
+      "name": "foto/pfila26-abendrot"
+    },
+    {
+      "quelle": "bula26/DJI_20260731174113_0113_D.JPG",
+      "name": "foto/bula26-zeltstadt"
+    },
+    {
+      "quelle": "bula26/DJI_20260808224844_0266_D.JPG",
+      "name": "foto/bula26-feuer",
+      "zuschnitt": [0.1831, 0.0977, 0.8423, 0.6836],
+      "helligkeit": 1.15
+    },
+    {
+      "quelle": "pfila30jubi.jpg",
+      "name": "pfila30",
+      "breiten": [800, 1600]
+    }
+  ]
+}

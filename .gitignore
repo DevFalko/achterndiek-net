@@ -5,3 +5,7 @@ assets/
 .DS_Store
 Thumbs.db
 *:Zone.Identifier
+
+# Node / Bild-Skript
+node_modules/
+*.vorschau.jpg
