@@ -62,6 +62,8 @@ Die Tests liegen in `tests/` und laufen ohne Zusatzpakete (Node-Testrunner):
   `assets/`, wird zusätzlich alles neu erzeugt und mit den Bildern im Repo verglichen – wichtig
   nach einem sharp-Update.
 - **`server.test.mjs`** – lokale Vorschau liefert Adressen ohne `.html` wie GitHub Pages
+- **`security.test.mjs`** – Content-Security-Policy in jeder Seite, keine Inline-Styles/-Skripte,
+  Karte ohne ausführbaren Inhalt, sichere Workflows
 
 Auf GitHub laufen die Tests bei jedem Push und Pull Request automatisch
 (`.github/workflows/tests.yml`, ohne den Vergleich mit den Originalen).
@@ -136,6 +138,12 @@ Jeder Push auf `main` wird von GitHub Pages automatisch veröffentlicht (ca. 1 M
 
 Strategie, Audit-Ergebnisse, bewusste Entscheidungen und Maßnahmenplan: [docs/SEO.md](docs/SEO.md).
 Dort steht auch die Checkliste für neue Seiten (Titel, Beschreibung, Canonical, Open Graph, Sitemap).
+
+## Sicherheit
+
+Bedrohungsmodell, Content-Security-Policy, GitHub-Einstellungen, DNS-Sollzustand (DMARC, CAA) und
+Checklisten: [docs/SECURITY.md](docs/SECURITY.md). Sicherheitslücken bitte privat über
+GitHub melden (Security → Report a vulnerability).
 
 ## Rechtliches
 
