@@ -30,11 +30,16 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // Knopf zeigt immer den echten Zustand – auch wenn das Handy den Autostart blockiert
+  // (z. B. Energiesparmodus): dann steht er auf „abspielen“ und startet das Video per Tipp.
+  const zeige = () => {
+    btn.setAttribute("aria-pressed", String(video.paused));
+    btn.setAttribute("aria-label", video.paused ? "Hintergrundvideo abspielen" : "Hintergrundvideo anhalten");
+  };
+  video.addEventListener("play", zeige);
+  video.addEventListener("pause", zeige);
   btn.hidden = false;
-  btn.addEventListener("click", () => {
-    const paused = btn.getAttribute("aria-pressed") === "true";
-    if (paused) video.play(); else video.pause();
-    btn.setAttribute("aria-pressed", String(!paused));
-    btn.setAttribute("aria-label", paused ? "Hintergrundvideo anhalten" : "Hintergrundvideo abspielen");
-  });
+  btn.addEventListener("click", () => (video.paused ? video.play().catch(() => {}) : video.pause()));
+  video.play().catch(zeige);
+  zeige();
 });
