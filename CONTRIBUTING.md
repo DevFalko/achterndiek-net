@@ -42,7 +42,9 @@ Die verbindlichen Regeln stehen in [CLAUDE.md](CLAUDE.md). Kurzfassung:
 - **Links** so schreiben wie in den bestehenden Seiten; auf der `404.html` absolut (`/…`),
   weil sie unter beliebigen Pfaden ausgeliefert wird.
 - **CSS:** Farben und Abstände über die Variablen in `:root` (`css/style.css`), keine neuen
-  Farbwerte direkt im Code.
+  Farbwerte direkt im Code. Aufteilung: `style.css` für alle Seiten, `start.css` und
+  `gruppen.css` nur für ihre Seite. Ebenen (`@layer basis, bausteine, seiten, hilfen`) statt
+  höherer Spezifität; Handy-Regeln (`@media`) direkt beim Baustein. Jede Datei unter 500 Zeilen.
 - **Barrierefreiheit:** Alt-Texte für Bilder, sprechende Linktexte, Bedienung per Tastatur,
   `prefers-reduced-motion` respektieren.
 - **Dateien** unter 500 Zeilen halten; Skripte nach `scripts/`, Doku nach `docs/`.

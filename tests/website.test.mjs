@@ -130,14 +130,38 @@ test("robots.txt verweist auf die Sitemap", () => {
   assert.match(lies("robots.txt"), new RegExp(`Sitemap: ${SITE}/sitemap.xml`));
 });
 
-test("CSS lädt nur lokale Dateien, die es gibt", () => {
-  const css = lies("css/style.css");
-  assert.doesNotMatch(css, /@import|url\(["']?(?:https?:)?\/\//);
-  for (const u of alle(/url\(["']?([^"')]+)["']?\)/g, css)) {
-    if (u.startsWith("data:")) continue;
-    assert.ok(existsSync(join(ROOT, "css", u)), `css: ${u} fehlt`);
+const cssDateien = readdirSync(join(ROOT, "css")).filter((f) => f.endsWith(".css")).sort();
+// Seiten-Stylesheets und wo sie geladen werden (siehe Kopf von css/style.css)
+const SEITEN_CSS = { "start.css": "index.html", "gruppen.css": "gruppen.html" };
+
+test("CSS: nur lokale Dateien, kein @import, jede Datei unter 500 Zeilen", () => {
+  assert.deepEqual(cssDateien, ["gruppen.css", "start.css", "style.css"], "neue CSS-Datei? SEITEN_CSS und Doku ergänzen");
+  for (const f of cssDateien) {
+    const css = lies(join("css", f));
+    assert.doesNotMatch(css, /@import|url\(["']?(?:https?:)?\/\//, `${f}: @import oder externe Datei`);
+    for (const u of alle(/url\(["']?([^"')]+)["']?\)/g, css)) {
+      if (!u.startsWith("data:")) assert.ok(existsSync(join(ROOT, "css", u)), `${f}: ${u} fehlt`);
+    }
+    assert.ok(css.split("\n").length < 500, `${f}: über 500 Zeilen – aufteilen`);
   }
 });
+
+test("CSS: Ebenen-Reihenfolge in style.css, Seiten-Stylesheets nur in der Ebene „seiten“", () => {
+  assert.match(lies("css/style.css"), /^@layer basis, bausteine, seiten, hilfen;$/m);
+  for (const f of Object.keys(SEITEN_CSS)) {
+    const ohneKommentare = lies(join("css", f)).replace(/\/\*[\s\S]*?\*\//g, "").trim();
+    assert.ok(ohneKommentare.startsWith("@layer seiten {") && ohneKommentare.endsWith("}"), `${f}: alles in @layer seiten { … }`);
+  }
+});
+
+for (const seite of seiten) {
+  test(`${seite}: lädt style.css zuerst und nur die passenden Seiten-Stylesheets`, () => {
+    const css = alle(/<link rel="stylesheet" href="\/?css\/([^"]+)"/g, html[seite]);
+    assert.equal(css[0], "style.css");
+    const erwartet = ["style.css", ...Object.entries(SEITEN_CSS).filter(([, s]) => s === seite).map(([f]) => f)];
+    assert.deepEqual(css, erwartet);
+  });
+}
 
 test("Gruppen: jede Gruppe hat einen Namen, Kartenpunkte liegen in Norddeutschland", () => {
   const gruppen = html["gruppen.html"].match(/<li class="group"[\s\S]*?<\/li>/g) || [];

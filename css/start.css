@@ -1,0 +1,142 @@
+/* Startseite: Video-Hero, Zahlen, Gau-Kacheln, Bildband „Bundeslager“, Galerie.
+   Wird nur in index.html nach css/style.css geladen. Ebenen siehe style.css. */
+
+@layer seiten {
+  /* ---------- Hero mit Hintergrundvideo ---------- */
+  .hero { position: relative; background: var(--paper); overflow: hidden; }
+  .hero .wrap {
+    display: grid; grid-template-columns: 1.5fr 1fr; align-items: center; gap: 2rem;
+    padding-block: clamp(3rem, 8vw, 6rem) clamp(5rem, 10vw, 8rem);
+    @media (max-width: 720px) { grid-template-columns: 1fr; }
+  }
+  .hero h1 span { color: var(--blue); }
+  .hero .dike { position: absolute; bottom: -1px; left: 0; }
+
+  .hero--video {
+    background: var(--navy); color: #fff;
+    min-height: min(86vh, 780px); display: flex; align-items: center;
+    @media (max-width: 720px) { min-height: 88vh; }
+  }
+  .hero-video, .hero-shade { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .hero-video { object-fit: cover; }
+  .hero-shade {
+    background:
+      linear-gradient(90deg, rgb(7 26 48 / .88) 0%, rgb(7 26 48 / .6) 50%, rgb(7 26 48 / .2) 100%),
+      linear-gradient(0deg, rgb(7 26 48 / .55), transparent 45%);
+    @media (max-width: 720px) { background: linear-gradient(0deg, rgb(7 26 48 / .9) 10%, rgb(7 26 48 / .55) 100%); }
+  }
+  .hero--video .wrap { position: relative; grid-template-columns: minmax(0, 46rem); }
+  .hero--video h1 { color: #fff; text-shadow: 0 2px 24px rgb(0 0 0 / .25); }
+  .hero--video h1 span { color: var(--gold); }
+  .hero--video .kicker { color: var(--gold-soft); }
+  .hero--video .lead { color: #dde6f1; }
+  .hero-meta {
+    position: absolute; right: 1rem; bottom: calc(clamp(48px, 7vw, 90px) + .75rem);
+    display: flex; align-items: center; gap: .75rem;
+    font-size: .85rem; color: rgb(255 255 255 / .8);
+  }
+  .hero-meta span { @media (max-width: 720px) { display: none; } }
+  .hero-caption { transition: opacity .25s ease; }
+  .hero-caption.is-changing { opacity: 0; }
+  .video-toggle {
+    width: 2.4rem; height: 2.4rem; border-radius: 50%; cursor: pointer;
+    border: 1px solid rgb(255 255 255 / .6); background: rgb(7 26 48 / .45); color: #fff;
+    display: grid; place-items: center;
+  }
+  .video-toggle svg { width: 14px; height: 14px; fill: currentColor; }
+  .video-toggle .i-play, .video-toggle[aria-pressed="true"] .i-pause { display: none; }
+  .video-toggle[aria-pressed="true"] .i-play { display: block; }
+
+  /* Text im Hero blendet dezent ein */
+  @media (prefers-reduced-motion: no-preference) {
+    .hero .reveal { animation: rise .7s cubic-bezier(.2, .7, .2, 1) both; }
+    .hero .reveal:nth-child(2) { animation-delay: .08s; }
+    .hero .reveal:nth-child(3) { animation-delay: .16s; }
+    .hero .reveal:nth-child(4) { animation-delay: .24s; }
+    @keyframes rise { from { opacity: 0; transform: translateY(18px); } }
+  }
+
+  /* ---------- Zahlen ---------- */
+  .stats {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
+    background: rgb(255 255 255 / .12); border-radius: var(--radius); overflow: hidden;
+    margin-top: 2.5rem;
+    @media (max-width: 960px) { grid-template-columns: repeat(2, 1fr); }
+  }
+  .stats div { background: var(--navy); padding: 1.5rem 1.25rem; }
+  .stats b { display: block; font: 800 2.4rem/1 var(--font-head); color: var(--gold); letter-spacing: -.03em; }
+  .stats span { font-size: .95rem; color: #b9c6d8; }
+
+  /* ---------- Gau-Kacheln ---------- */
+  .gau-tile {
+    display: flex; flex-direction: column; text-decoration: none; color: inherit;
+    background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius);
+    overflow: hidden; transition: transform .2s ease, box-shadow .2s ease;
+  }
+  .gau-tile:hover { transform: translateY(-4px); box-shadow: 0 14px 30px rgb(12 40 71 / .12); }
+  .gau-tile h3 { margin: 0; }
+  .gau-tile div { padding: 1.1rem 1.25rem 1.3rem; }
+  .gau-tile p { margin: .3rem 0 0; color: var(--muted); font-size: 1rem; }
+  .flag { aspect-ratio: 3 / 2; width: 100%; object-fit: contain; background: var(--sand-2); }
+
+  /* ---------- Bildband „Bundeslager“ mit Drohnenflug ---------- */
+  .band {
+    position: relative; overflow: hidden; background: var(--navy); color: #fff;
+    min-height: clamp(420px, 60vw, 640px); display: flex; align-items: flex-end;
+    @media (max-width: 720px) { min-height: 640px; }
+  }
+  .band-img, .band-shade { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .band-img {
+    object-fit: cover; object-position: center 40%; transform-origin: 54% 48%;
+    @media (max-width: 720px) { object-position: 30% 50%; }
+  }
+  /* Das Bild fährt langsam in die Zeltstadt hinein – beim Scrollen (Chrome, Edge, Safari)
+     bzw. zeitbasiert, wo Scroll-Animationen fehlen. Aus bei „Bewegung reduzieren“. */
+  @keyframes drohnenflug {
+    from { transform: scale(1) translate3d(0, 0, 0); }
+    to   { transform: scale(1.45) translate3d(-2%, 3%, 0); }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .band-img { animation: drohnenflug 30s ease-in-out infinite alternate; }
+    @supports (animation-timeline: view()) {
+      /* Zeitleiste am Abschnitt, nicht am Bild: .band ist wegen overflow selbst ein Scroll-Container */
+      .band { view-timeline: --band block; }
+      .band-img { animation: drohnenflug linear both; animation-timeline: --band; animation-range: entry 0% exit 70%; }
+    }
+  }
+  .band-shade {
+    background:
+      linear-gradient(0deg, rgb(7 26 48 / .9) 0%, rgb(7 26 48 / .45) 45%, rgb(7 26 48 / .05) 75%),
+      linear-gradient(90deg, rgb(7 26 48 / .55), transparent 60%);
+  }
+  .band-text {
+    position: relative; padding-block: 3rem; max-width: var(--wrap);
+    @media (max-width: 720px) { padding-block: 2rem; }
+  }
+  .band-text h2 { color: #fff; }
+  .band-text p:not(.kicker) { max-width: 36rem; color: #e1e9f3; }
+  .band .kicker { color: var(--gold); }
+  .band a.btn { margin-top: .5rem; }
+
+  /* ---------- Galerie ---------- */
+  .gallery {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;
+    @media (max-width: 720px) { grid-template-columns: 1fr 1fr; }
+  }
+  .gallery figure { margin: 0; position: relative; overflow: hidden; border-radius: var(--radius); background: var(--sand-2); }
+  .gallery figure:last-child { @media (max-width: 720px) { grid-column: span 2; } }
+  .gallery img { width: 100%; height: 100%; object-fit: cover; aspect-ratio: 3 / 2; transition: transform .5s ease; }
+  .gallery figure:hover img { transform: scale(1.04); }
+  .gallery-big {
+    grid-column: span 2; grid-row: span 2;
+    @media (max-width: 720px) { grid-row: auto; }
+  }
+  .gallery-big img {
+    aspect-ratio: auto;
+    @media (max-width: 720px) { aspect-ratio: 3 / 2; }
+  }
+  .gallery figcaption {
+    position: absolute; inset: auto 0 0 0; padding: 2rem .9rem .7rem;
+    background: linear-gradient(transparent, rgb(7 26 48 / .8)); color: #fff; font-size: .92rem;
+  }
+}

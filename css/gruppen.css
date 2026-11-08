@@ -1,0 +1,110 @@
+/* Gruppenseite: Filter, Gau-Abschnitte, Gruppenliste, interaktive Karte.
+   Wird nur in gruppen.html nach css/style.css geladen. Ebenen siehe style.css. */
+
+@layer seiten {
+  :root { --c-bremen: #d0312d; --c-holsatia: #1663ad; --c-chauken: #e0a100; --c-weserland: #2e9e4f; }
+
+  /* ---------- Filter ---------- */
+  .filter {
+    position: sticky; top: 0; z-index: 5;
+    background: rgb(246 242 234 / .94); backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line); padding-block: .8rem;
+    @media print { display: none !important; }
+  }
+  .filter .wrap {
+    display: flex; flex-wrap: wrap; gap: .5rem; align-items: center;
+    @media (max-width: 720px) { gap: .35rem; }
+  }
+  .filter input {
+    flex: 1 1 14rem; font: inherit; font-size: 1rem; padding: .6rem 1rem;
+    border: 1px solid var(--line); border-radius: 999px; background: var(--paper); color: var(--ink);
+    @media (max-width: 720px) { flex-basis: 100%; }
+  }
+  .chip {
+    font: 600 .95rem/1 var(--font-head); padding: .6rem .95rem; border-radius: 999px;
+    border: 1px solid var(--line); background: var(--paper); color: var(--ink); cursor: pointer;
+    @media (max-width: 720px) { padding: .5rem .55rem; font-size: .85rem; }
+  }
+  .chip[aria-pressed="true"] { background: var(--navy); border-color: var(--navy); color: #fff; }
+
+  /* ---------- Gau-Abschnitte ---------- */
+  .gau { padding-block: 3rem; border-bottom: 1px solid var(--line); scroll-margin-top: 4.5rem; }
+  .gau:last-of-type { border-bottom: 0; }
+  .gau-head {
+    display: grid; grid-template-columns: 180px 1fr; gap: 1.5rem; align-items: center; margin-bottom: 1.75rem;
+    @media (max-width: 720px) { grid-template-columns: 110px 1fr; gap: 1rem; }
+    @media (max-width: 460px) { grid-template-columns: 1fr; }
+  }
+  .gau-head img {
+    border-radius: 8px; border: 1px solid var(--line);
+    @media (max-width: 460px) { width: 160px; }
+  }
+  .gau-head h2 { margin-bottom: .2em; }
+  .gau-head p { margin: 0; color: var(--muted); }
+  .gau-meta { display: flex; flex-wrap: wrap; gap: .4rem 1.25rem; margin-top: .6rem; font-size: 1rem; }
+
+  /* ---------- Gruppen ---------- */
+  .groups { display: grid; grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr)); gap: 1rem; list-style: none; margin: 0; padding: 0; }
+  .group {
+    background: var(--paper); border: 1px solid var(--line); border-radius: 12px;
+    padding: 1.1rem 1.2rem; display: flex; flex-direction: column; gap: .2rem;
+    scroll-margin-top: 6rem;
+  }
+  .group h3 { font-size: 1.15rem; margin: 0; }
+  .group .type {
+    align-self: flex-start; font: 700 .7rem/1 var(--font-head); letter-spacing: .1em; text-transform: uppercase;
+    color: var(--blue); background: #e5eef8; padding: .35rem .5rem; border-radius: 6px; margin-bottom: .35rem;
+  }
+  .group .type--old { color: #7a5a00; background: var(--gold-soft); }
+  .group .place { font-weight: 600; }
+  .group .church { color: var(--muted); font-size: .98rem; }
+  .group .links { display: flex; flex-wrap: wrap; gap: .3rem 1rem; margin-top: .5rem; font-size: .98rem; }
+  .group .links a { overflow-wrap: anywhere; }
+  .group .hint { color: var(--muted); font-size: .95rem; margin-top: .5rem; }
+  .group .note {
+    font-size: .9rem; color: #7a5a00; background: var(--gold-soft);
+    align-self: flex-start; padding: .15rem .5rem; border-radius: 6px; margin-bottom: .2rem;
+  }
+  /* Kurz aufleuchten, wenn man auf der Karte einen Punkt anklickt */
+  .group.flash { animation: flash 1.6s ease; }
+  @keyframes flash { 0%, 40% { box-shadow: 0 0 0 4px var(--gold); } 100% { box-shadow: 0 0 0 0 transparent; } }
+  .empty { display: none; padding: 3rem 0; color: var(--muted); }
+
+  /* ---------- Karte ---------- */
+  .map-box {
+    display: grid; grid-template-columns: 1fr 1.5fr; gap: 2rem; align-items: center;
+    padding-block: 2.5rem 1rem;
+    @media (max-width: 720px) { grid-template-columns: 1fr; }
+  }
+  .map-box h2 { font-size: clamp(1.5rem, 3vw, 2rem); }
+  .map-box p { color: var(--muted); }
+  .legend { list-style: none; padding: 0; margin: 1rem 0 0; display: grid; gap: .4rem; font-size: 1rem; }
+  .legend i { display: inline-block; width: .8rem; height: .8rem; border-radius: 50%; margin-right: .55rem; vertical-align: -.05em; box-shadow: 0 0 0 2px #fff; }
+  .legend--bremen { background: var(--c-bremen); }
+  .legend--holsatia { background: var(--c-holsatia); }
+  .legend--chauken { background: var(--c-chauken); }
+  .legend--weserland { background: var(--c-weserland); }
+  .map {
+    position: relative; aspect-ratio: 1000 / 880; background: #dfe9f2;
+    border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden;
+  }
+  .map-svg { display: block; width: 100%; height: 100%; }
+  .map .land { fill: #eee8dc; stroke: #fff; stroke-width: 1.2; vector-effect: non-scaling-stroke; }
+  .map .land--ours { fill: var(--paper); stroke: #c9bfa9; }
+  .map .sea { fill: #7d9bb8; font: italic 600 22px var(--font-body); letter-spacing: .15em; }
+  .map .city { fill: var(--muted); font: 600 22px var(--font-head); }
+  .map .dot circle { stroke: #fff; cursor: pointer; transition: opacity .2s; }
+  .map .dot--bremen circle { fill: var(--c-bremen); }
+  .map .dot--holsatia circle { fill: var(--c-holsatia); }
+  .map .dot--chauken circle { fill: var(--c-chauken); }
+  .map .dot--weserland circle { fill: var(--c-weserland); }
+  .map .dot:hover circle, .map .dot:focus circle { stroke: var(--navy); }
+  .map .dot:focus { outline: none; }
+  .map-tip {
+    position: absolute; transform: translate(-50%, calc(-100% - 14px)); pointer-events: none;
+    background: var(--navy); color: #fff; padding: .45rem .7rem; border-radius: 8px;
+    font-size: .9rem; line-height: 1.3; white-space: nowrap; text-align: center;
+    box-shadow: 0 6px 18px rgb(12 40 71 / .25);
+  }
+  .map-tip b { display: block; font-family: var(--font-head); }
+}

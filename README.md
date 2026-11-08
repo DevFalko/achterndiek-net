@@ -26,7 +26,8 @@ Live: <https://achterndiek.net> · gehostet mit GitHub Pages
 | `aeltere.html` | Ältere & Ehemalige, Kreuzpfadfinder, kreuz & quer |
 | `cpd.html` | Die CPD (Bund, Bundeshof, Aktionen, Schulung) |
 | `kontakt.html`, `impressum.html`, `datenschutz.html`, `404.html` | |
-| `css/style.css` | Gesamtes Styling (Farben als CSS-Variablen in `:root`) |
+| `css/style.css` | Styling aller Seiten (Farben als CSS-Variablen in `:root`, Aufbau im Dateikopf) |
+| `css/start.css`, `css/gruppen.css` | Nur Startseite bzw. Gruppenseite (Video-Hero, Bildband, Galerie / Filter, Karte) |
 | `js/gruppen.js` | Filter und Karte der Gruppenseite |
 | `js/hero.js` | Steuerung des Hintergrundvideos |
 | `img/` | Fahnen, Logo, Karte (`karte.svg`), Fotos (`img/foto/`) |
