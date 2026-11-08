@@ -149,6 +149,8 @@ p { margin: 0 0 1em; text-wrap: pretty; }
   display: flex; align-items: center; gap: .75rem;
   font-size: .85rem; color: rgb(255 255 255 / .8);
 }
+.hero-caption { transition: opacity .25s ease; }
+.hero-caption.is-changing { opacity: 0; }
 .video-toggle {
   width: 2.4rem; height: 2.4rem; border-radius: 50%; cursor: pointer;
   border: 1px solid rgb(255 255 255 / .6); background: rgb(7 26 48 / .45); color: #fff;
