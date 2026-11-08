@@ -85,13 +85,22 @@ Das Skript verkleinert, verpixelt, speichert als WebP und entfernt alle Metadate
 
 ### Hintergrundvideo
 
-`video/pfila30-720.mp4` und `-480.mp4` sind Sekunde 10–18 der Drohnenaufnahme vom
-Jubiläums-Pfingstlager 2026 (H.264, ohne Ton). Neu erzeugen z. B. mit ffmpeg:
+`video/header-720.mp4` (Desktop) und `header-480.mp4` (Handy) sind eine Schleife aus vier
+Drohnenszenen mit Überblendungen (~27 s, H.264, ohne Ton):
+
+1. Jubiläums-Pfingstlager 2026 – die „30“
+2. Bundeslager 2026 – Landschaft, die Zeltstadt erscheint
+3. Bundeslager 2026 – Zeltstadt von oben
+4. Bundeslager 2026 – Festtafeln von oben
+
+Schnitt, Zeiten und Überblendungen stehen in `scripts/header-video.sh` (benötigt ffmpeg):
 
 ```bash
-ffmpeg -ss 10 -t 8 -i assets/pfilag30jubi.mp4 -an -vf "scale=1280:-2,fps=25,format=yuv420p" \
-  -c:v libx264 -preset veryslow -crf 31 -movflags +faststart -map_metadata -1 video/pfila30-720.mp4
+scripts/header-video.sh
 ```
+
+Wer Szenen ändert, muss die Umschaltzeiten des Untertitels in `js/hero.js` anpassen und die
+neuen Szenen vorher auf erkennbare Gesichter prüfen (siehe CLAUDE.md).
 
 ## Veröffentlichen
 
