@@ -11,7 +11,8 @@ Live: <https://achterndiek.net> · gehostet mit GitHub Pages
 - **Datenschutzfreundlich:** keine Cookies, kein Tracking, keine externen Dienste
   (Schriften und Karte liegen lokal) – deshalb auch kein Cookie-Banner.
 - **Keine personenbezogenen Daten:** nur Funktionsadressen; Gesichter auf Fotos werden
-  immer verpixelt. Die verbindlichen Regeln stehen in [CLAUDE.md](CLAUDE.md).
+  immer verpixelt. Die verbindlichen Regeln stehen in [CLAUDE.md](CLAUDE.md),
+  Hinweise für Entwickler:innen in [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Aufbau
 
