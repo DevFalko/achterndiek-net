@@ -4,6 +4,7 @@ Allow: /
 Disallow: /docs/
 Disallow: /scripts/
 Disallow: /README.md
+Disallow: /CONTRIBUTING.md
 Disallow: /CLAUDE.md
 Disallow: /package.json
 Disallow: /package-lock.json
