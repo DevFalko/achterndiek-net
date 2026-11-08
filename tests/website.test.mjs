@@ -75,6 +75,14 @@ for (const seite of seiten) {
     assert.deepEqual(extern, [], "keine CDNs, Fonts, Tracker o. Ä. einbinden");
   });
 
+  test(`${seite}: Dunkelmodus – color-scheme erklärt, Deichlinien ohne feste Farbe`, () => {
+    // Ohne eigene Dunkel-Palette dunkeln Browser die Seite selbst ab (helle Deichlinien, Braun-Grau).
+    assert.match(html[seite], /<meta name="color-scheme" content="light dark">/);
+    for (const svg of html[seite].match(/<svg class="dike[^>]*>[\s\S]*?<\/svg>/g) || []) {
+      assert.doesNotMatch(svg, /\sfill="/, "Deichfarbe per Klasse (dike / dike--navy), nicht per fill-Attribut");
+    }
+  });
+
   test(`${seite}: Bilder haben Alt-Text`, () => {
     const ohne = (html[seite].match(/<img\b[^>]*>/g) || []).filter((t) => !/\salt="/.test(t));
     assert.deepEqual(ohne, []);

@@ -45,6 +45,10 @@ Die verbindlichen Regeln stehen in [CLAUDE.md](CLAUDE.md). Kurzfassung:
   Farbwerte direkt im Code. Aufteilung: `style.css` für alle Seiten, `start.css` und
   `gruppen.css` nur für ihre Seite. Ebenen (`@layer basis, bausteine, seiten, hilfen`) statt
   höherer Spezifität; Handy-Regeln (`@media`) direkt beim Baustein. Jede Datei unter 500 Zeilen.
+- **Dunkelmodus:** Farben nur über die Variablen in `:root`. Die Dunkel-Palette steht im Block
+  `@media (prefers-color-scheme: dark)` in `css/style.css`. Für Marine als Schriftfarbe
+  `--navy-text`, für Buttons `--btn-bg` verwenden. Deichlinien: `class="dike"` (Sand) bzw.
+  `class="dike dike--navy"`, ohne `fill`-Attribut. Neue Farben im hellen **und** dunklen Modus prüfen.
 - **Barrierefreiheit:** Alt-Texte für Bilder, sprechende Linktexte, Bedienung per Tastatur,
   `prefers-reduced-motion` respektieren.
 - **Dateien** unter 500 Zeilen halten; Skripte nach `scripts/`, Doku nach `docs/`.

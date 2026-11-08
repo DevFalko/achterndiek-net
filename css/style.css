@@ -45,6 +45,50 @@
     --wrap: 72rem;
     --font-head: "Bricolage", "Avenir Next", "Segoe UI", sans-serif;
     --font-body: "Source Sans", "Segoe UI", system-ui, sans-serif;
+
+    /* Rollen-Farben: im hellen Modus aus der Grundpalette, im Dunkelmodus angepasst */
+    --navy-text: var(--navy);           /* Marine als Schriftfarbe (Logo, Chronik, Ghost-Button) */
+    --btn-bg: var(--navy);              /* Standard-Button */
+    --blue-surface: var(--blue);        /* blaue Fläche mit weißer Schrift */
+    --tag-bg: #e5eef8;                  /* Etikett „Stamm“ usw. */
+    --scroll-thumb: rgb(12 40 71 / .43);
+    --filter-bg: rgb(246 242 234 / .94);
+    --map-sea: #dfe9f2;
+    --map-land: #eee8dc;
+    --map-ours: var(--paper);
+    --map-stroke: #fff;
+    --map-ours-stroke: #c9bfa9;
+    --map-sea-text: #7d9bb8;
+
+    color-scheme: light dark;
+  }
+
+  /* Dunkelmodus: eigene Palette auf Basis des Marineblaus der Fahne. Ohne sie dunkeln
+     Browser (Samsung Internet, Chrome) die Seite selbst ab – mit hellen Deichlinien und Braun-Grau. */
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --sand: #0d1626;
+      --sand-2: #1a2740;
+      --paper: #142036;
+      --ink: #e8edf5;
+      --muted: #a4b0c3;
+      --line: #2a3a55;
+      --blue: #8bbcf0;
+      --navy-2: #1d4a7a;
+
+      --navy-text: #e8edf5;
+      --btn-bg: #1f5590;
+      --blue-surface: #2a64a8;
+      --tag-bg: #1b3354;
+      --scroll-thumb: rgb(232 237 245 / .35);
+      --filter-bg: rgb(13 22 38 / .94);
+      --map-sea: #0f2236;
+      --map-land: #1c2a40;
+      --map-ours: #2a3c58;
+      --map-stroke: #0d1626;
+      --map-ours-stroke: #4a6080;
+      --map-sea-text: #4f6f8f;
+    }
   }
 
   *, *::before, *::after { box-sizing: border-box; }
@@ -52,7 +96,7 @@
   html {
     -webkit-text-size-adjust: 100%; scroll-behavior: smooth;
     /* Dezente Scrollbar: transparente Spur, halbtransparenter Griff (Firefox, Chrome/Edge ≥ 121) */
-    scrollbar-color: rgb(12 40 71 / .43) transparent;
+    scrollbar-color: var(--scroll-thumb) transparent;
     @media (prefers-reduced-motion: reduce) { scroll-behavior: auto; }
   }
   body {
@@ -111,7 +155,7 @@
   }
   .brand {
     display: flex; align-items: center; gap: .7rem;
-    text-decoration: none; color: var(--navy);
+    text-decoration: none; color: var(--navy-text);
     font: 800 1.3rem/1 var(--font-head); letter-spacing: -.02em;
   }
   .brand img { width: 40px; height: 44px; }
@@ -134,7 +178,7 @@
   }
   .nav a:hover { background: var(--sand); }
   .nav a[aria-current="page"] {
-    background: var(--navy); color: #fff;
+    background: var(--btn-bg); color: #fff;
     @media (max-width: 720px) { padding-inline: .5rem; }
   }
 
@@ -147,11 +191,11 @@
     display: inline-flex; align-items: center; gap: .5rem;
     padding: .85rem 1.4rem; border-radius: 999px;
     font: 700 1rem/1 var(--font-head); text-decoration: none;
-    background: var(--navy); color: #fff; border: 2px solid var(--navy);
+    background: var(--btn-bg); color: #fff; border: 2px solid var(--btn-bg);
     transition: transform .15s ease, background .15s ease;
   }
   .btn:hover { transform: translateY(-2px); background: var(--navy-2); }
-  .btn--ghost { background: transparent; color: var(--navy); }
+  .btn--ghost { background: transparent; color: var(--navy-text); }
   .btn--ghost:hover { background: var(--sand); }
   .btn--gold { background: var(--gold); border-color: var(--gold); color: var(--navy); }
   .btn--gold:hover { background: #ffc93d; }
@@ -172,13 +216,15 @@
     padding: .5rem 1rem; border-radius: 999px; border: 1px solid var(--line);
     font: 600 .95rem/1 var(--font-head); color: var(--ink); text-decoration: none; background: var(--paper);
   }
-  .subnav a[aria-current="page"] { background: var(--blue); border-color: var(--blue); color: #fff; }
+  .subnav a[aria-current="page"] { background: var(--blue-surface); border-color: var(--blue-surface); color: #fff; }
 
-  /* Wasser links, Deich, Land rechts */
+  /* Wasser links, Deich, Land rechts – Farbe = Hintergrund der folgenden Sektion */
   .dike {
     display: block; width: 100%; height: clamp(48px, 7vw, 90px);
     @media print { display: none !important; }
   }
+  .dike path { fill: var(--sand); }
+  .dike--navy path { fill: var(--navy); }
 
   /* ---------- Sektionen und Raster ---------- */
   .section { padding-block: clamp(3.5rem, 8vw, 6rem); }
@@ -282,7 +328,7 @@
     content: ""; position: absolute; left: -7px; top: .45rem; width: 12px; height: 12px;
     border-radius: 50%; background: var(--gold); border: 2px solid var(--sand);
   }
-  .timeline b { font: 800 1.1rem/1 var(--font-head); color: var(--navy); display: block; margin-bottom: .3rem; }
+  .timeline b { font: 800 1.1rem/1 var(--font-head); color: var(--navy-text); display: block; margin-bottom: .3rem; }
 
   .song-wrap {
     display: grid; grid-template-columns: 1fr 1.2fr; gap: clamp(2rem, 5vw, 4rem); align-items: start;
