@@ -1,0 +1,7 @@
+# Quelldateien (Originale, teils >100 MB) – nicht veröffentlichen
+assets/
+
+# System
+.DS_Store
+Thumbs.db
+*:Zone.Identifier
