@@ -249,7 +249,21 @@ p { margin: 0 0 1em; text-wrap: pretty; }
   min-height: clamp(420px, 60vw, 640px); display: flex; align-items: flex-end;
 }
 .band-img, .band-shade { position: absolute; inset: 0; width: 100%; height: 100%; }
-.band-img { object-fit: cover; object-position: center 40%; }
+.band-img { object-fit: cover; object-position: center 40%; transform-origin: 54% 48%; }
+/* Drohnenflug: das Bild fährt langsam in die Zeltstadt hinein – beim Scrollen
+   (Chrome, Edge, Safari) bzw. zeitbasiert, wo Scroll-Animationen fehlen. */
+@keyframes drohnenflug {
+  from { transform: scale(1) translate3d(0, 0, 0); }
+  to   { transform: scale(1.45) translate3d(-2%, 3%, 0); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .band-img { animation: drohnenflug 30s ease-in-out infinite alternate; }
+  @supports (animation-timeline: view()) {
+    /* Zeitleiste am Abschnitt, nicht am Bild: .band ist wegen overflow selbst ein Scroll-Container */
+    .band { view-timeline: --band block; }
+    .band-img { animation: drohnenflug linear both; animation-timeline: --band; animation-range: entry 0% exit 70%; }
+  }
+}
 .band-shade {
   background:
     linear-gradient(0deg, rgb(7 26 48 / .9) 0%, rgb(7 26 48 / .45) 45%, rgb(7 26 48 / .05) 75%),

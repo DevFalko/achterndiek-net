@@ -46,7 +46,8 @@
     },
     {
       "quelle": "bula26/DJI_20260731174113_0113_D.JPG",
-      "name": "foto/bula26-zeltstadt"
+      "name": "foto/bula26-zeltstadt",
+      "breiten": [800, 1400, 2000]
     },
     {
       "quelle": "bula26/DJI_20260808224844_0266_D.JPG",
