@@ -10,11 +10,11 @@ Daraus ergeben sich die Suchanfragen, für die wir gefunden werden wollen:
 
 | Zielgruppe | typische Suche | Zielseite |
 |---|---|---|
-| Eltern / Kinder | „Pfadfinder Bremen“, „Pfadfinder Kinder Stuhr“, „Pfadfinder Hamburg Langenhorn“ | `gruppen.html` (später: Stammesseiten) |
-| Eltern (informierend) | „Pfadfinder werden“, „ab wann Pfadfinder“, „Pfadfinder Kosten“ | `mitmachen.html` |
-| Neugierige | „Was machen Pfadfinder“, „Pfadfinder Klischees“ | `pfadfinden.html` |
-| Mitglieder / Ehemalige | „Achter'n Diek“, „Achtern Diek“, „CPD Landesmark“, „Kreuzpfadfinder“ | Startseite, `ueber-uns.html`, `aeltere.html` |
-| Gemeinden / Gründer | „Pfadfindergruppe gründen“ | `mitmachen.html#siedeln` |
+| Eltern / Kinder | „Pfadfinder Bremen“, „Pfadfinder Kinder Stuhr“, „Pfadfinder Hamburg Langenhorn“ | `gruppen` (später: Stammesseiten) |
+| Eltern (informierend) | „Pfadfinder werden“, „ab wann Pfadfinder“, „Pfadfinder Kosten“ | `mitmachen` |
+| Neugierige | „Was machen Pfadfinder“, „Pfadfinder Klischees“ | `pfadfinden` |
+| Mitglieder / Ehemalige | „Achter'n Diek“, „Achtern Diek“, „CPD Landesmark“, „Kreuzpfadfinder“ | Startseite, `ueber-uns`, `aeltere` |
+| Gemeinden / Gründer | „Pfadfindergruppe gründen“ | `mitmachen#siedeln` |
 
 **Was wir bewusst nicht anstreben:** bundesweite Begriffe wie „Pfadfinder“ allein. Dort ranken
 große Verbände und Wikipedia; der Aufwand stünde in keinem Verhältnis zum Nutzen.
@@ -31,7 +31,7 @@ große Verbände und Wikipedia; der Aufwand stünde in keinem Verhältnis zum Nu
 ### Behoben in diesem Schritt
 | Problem | Warum relevant | Maßnahme |
 |---|---|---|
-| Canonical nur auf der Startseite | GitHub Pages liefert jede Seite unter `/x` **und** `/x.html`, bald auch http + https → Duplikate | Absolutes, selbstreferenzierendes `rel=canonical` (https, `.html`) auf jeder Seite |
+| Canonical nur auf der Startseite | GitHub Pages liefert jede Seite unter `/x` **und** `/x.html`, bald auch http + https → Duplikate | Absolutes, selbstreferenzierendes `rel=canonical` (https) auf jeder Seite |
 | Titel generisch („Gruppen – …“) | Titel ist laut Google die wichtigste Info für den Klick | Beschreibende, eindeutige Titel mit Suchbegriff + Markenname |
 | Beschreibungen ohne Orte | Snippet entscheidet über Klick | Orte und Zielgruppe in die Beschreibung |
 | Open-Graph nur auf der Startseite | Vorschau beim Teilen (WhatsApp, Signal, Instagram) leer | `og:*` + `twitter:card` auf allen Seiten |
@@ -50,7 +50,7 @@ große Verbände und Wikipedia; der Aufwand stünde in keinem Verhältnis zum Nu
 
 | Empfehlung aus SEO-Ratgebern | Entscheidung | Begründung |
 |---|---|---|
-| URLs ohne `.html` („Clean URLs“) | **Nein** | Kein Ranking-Vorteil; GitHub Pages kann nicht serverseitig umleiten; lokale Vorschau würde brechen. Duplikate löst das Canonical. |
+| URLs ohne `.html` („Clean URLs“) | **Ja** | Kürzere, schönere Adressen; GitHub Pages liefert /x aus x.html; Duplikate löst das Canonical; lokale Vorschau über scripts/server.py. |
 | FAQ-Strukturdaten (`FAQPage`) | **Nein** | Google zeigt FAQ-Rich-Results seit 2023 nur noch für Behörden-/Gesundheitsseiten. Kein Nutzen. |
 | Breadcrumb-Strukturdaten | **Nein** | Flache Seitenstruktur, kaum Nutzen. |
 | Google Business Profile für die Landesmark | **Nein** | Erfordert einen Ort mit Kundenkontakt; eine Landesmark ohne Geschäftsstelle verstößt sonst gegen die Richtlinien. Für einzelne Stämme mit festem Gruppenraum ggf. prüfen (Absprache mit der Kirchengemeinde). |
@@ -78,10 +78,10 @@ weil sie aus dem eigenen Verband kommen:
 | # | Wo | Was |
 |---|---|---|
 | 5 | **CPDwiki**, Seite „Landesmark Achter'n Diek“ | Weblink auf `https://achterndiek.net` aktualisieren (steht noch auf http/www) |
-| 6 | **CPD-Gruppenkarte (uMap)** | Bei Gruppen ohne eigene Website als „Webseite“ `https://achterndiek.net/gruppen.html` eintragen; Landesmark-Eintrag ergänzen |
+| 6 | **CPD-Gruppenkarte (uMap)** | Bei Gruppen ohne eigene Website als „Webseite“ `https://achterndiek.net/gruppen` eintragen; Landesmark-Eintrag ergänzen |
 | 7 | **c-p-d.info** | Bundesredaktion um Link bei „Gruppen“ bzw. Landesmarken bitten |
 | 8 | **Gau-Websites** (cpd-bremen.de, gau-holsatia.de) und **Stammes-Websites** | Link „Landesmark Achter'n Diek“ im Footer |
-| 9 | **Kirchengemeinden** der Stämme | Auf deren Gruppen-/Jugendseiten auf die Gruppe bzw. `gruppen.html` verlinken lassen |
+| 9 | **Kirchengemeinden** der Stämme | Auf deren Gruppen-/Jugendseiten auf die Gruppe bzw. `gruppen` verlinken lassen |
 | 10 | **Instagram** @achtern_diek_cpd | `achterndiek.net` als Link in der Bio |
 | 11 | **Familiennetz Bremen** (familiennetz-bremen.de) und vergleichbare Verzeichnisse in Hamburg / Landkreisen | Einträge für die Gruppen anlegen (dort suchen Eltern aktiv) |
 
