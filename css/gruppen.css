@@ -32,7 +32,16 @@
   }
   .naehe-btn svg { width: 1rem; height: 1rem; fill: currentColor; }
   .naehe-btn[aria-busy="true"] { opacity: .7; cursor: progress; }
+  .chips {
+    display: flex; gap: .5rem;
+    @media (max-width: 720px) {
+      gap: .35rem; flex: 1 1 100%; overflow-x: auto; scrollbar-width: none;
+      margin-inline: -1rem; padding-inline: 1rem; scroll-padding-inline: 1rem;
+    }
+  }
+  .chips::-webkit-scrollbar { display: none; }
   .chip {
+    flex: none;
     font: 600 .95rem/1 var(--font-head); padding: .6rem .95rem; border-radius: 999px;
     border: 1px solid var(--line); background: var(--paper); color: var(--ink); cursor: pointer;
     @media (max-width: 720px) { padding: .5rem .55rem; font-size: .85rem; }
@@ -134,7 +143,8 @@
   .map .dot--holsatia circle { fill: var(--c-holsatia); }
   .map .dot--chauken circle { fill: var(--c-chauken); }
   .map .dot--weserland circle { fill: var(--c-weserland); }
-  .map .dot:hover circle, .map .dot:focus circle { stroke: var(--navy); }
+  .map .dot:hover circle, .map .dot:focus circle { stroke: var(--ink); }
+  .map .dot:focus-visible circle { stroke: var(--blue); stroke-width: 4px; vector-effect: non-scaling-stroke; }
   .map .dot:focus { outline: none; }
   .map-tip {
     position: absolute; transform: translate(-50%, calc(-100% - 14px)); pointer-events: none;

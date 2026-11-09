@@ -63,14 +63,16 @@
   <div class="filter" id="filter" hidden>
     <div class="wrap">
       <div class="suche">
-        <input type="search" id="q" placeholder="Ort oder Name suchen …" aria-label="Gruppen nach Ort oder Name durchsuchen">
+        <input type="search" id="q" placeholder="Ort oder Name …" aria-label="Gruppen nach Ort oder Name durchsuchen">
         <button class="naehe-btn" type="button" id="naehe-btn" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.6a2.6 2.6 0 1 1 0-5.2 2.6 2.6 0 0 1 0 5.2z"/></svg>In meiner Nähe</button>
       </div>
+      <div class="chips" role="group" aria-label="Nach Gau filtern">
       <button class="chip" type="button" data-gau="" aria-pressed="true">Alle</button>
       <button class="chip" type="button" data-gau="bremen" aria-pressed="false">Bremen</button>
       <button class="chip" type="button" data-gau="holsatia" aria-pressed="false">Holsatia</button>
       <button class="chip" type="button" data-gau="chauken" aria-pressed="false">Chauken</button>
       <button class="chip" type="button" data-gau="weserland" aria-pressed="false">Weserland</button>
+      </div>
     </div>
   </div>
 
