@@ -46,7 +46,9 @@ Die verbindlichen Regeln stehen in [CLAUDE.md](CLAUDE.md). Kurzfassung:
   `gruppen.css` nur für ihre Seite. Ebenen (`@layer basis, bausteine, seiten, hilfen`) statt
   höherer Spezifität; Handy-Regeln (`@media`) direkt beim Baustein. Jede Datei unter 500 Zeilen.
 - **Dunkelmodus:** Farben nur über die Variablen in `:root`. Die Dunkel-Palette steht im Block
-  `@media (prefers-color-scheme: dark)` in `css/style.css`. Für Marine als Schriftfarbe
+  `:root[data-farbschema="dunkel"]` in `css/style.css`; das Attribut setzt `js/farbschema.js`
+  (System-Vorgabe oder Wahl über den Umschalter im Header, gemerkt per `localStorage`, kein Cookie).
+  Das Skript wird **ohne** `defer` vor dem Stylesheet geladen, damit nichts aufblitzt. Für Marine als Schriftfarbe
   `--navy-text`, für Buttons `--btn-bg` verwenden. Deichlinien: `class="dike"` (Sand) bzw.
   `class="dike dike--navy"`, ohne `fill`-Attribut. Neue Farben im hellen **und** dunklen Modus prüfen.
 - **Barrierefreiheit:** Alt-Texte für Bilder, sprechende Linktexte, Bedienung per Tastatur,

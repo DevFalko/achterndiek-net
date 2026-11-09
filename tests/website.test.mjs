@@ -83,6 +83,14 @@ for (const seite of seiten) {
     }
   });
 
+  test(`${seite}: Hell/Dunkel-Umschalter – Skript blockierend vor dem CSS, Button im Header`, () => {
+    // Ohne frühes Setzen von data-farbschema würde die Seite kurz hell aufblitzen.
+    const s = html[seite];
+    const skript = s.search(/<script src="\/?js\/farbschema\.js"><\/script>/);
+    assert.ok(skript > 0 && skript < s.search(/<link rel="stylesheet"/), "farbschema.js ohne defer vor dem ersten Stylesheet laden");
+    assert.match(s, /<header class="site-header">[\s\S]*<button class="farbschema" type="button" aria-pressed="false" aria-label="[^"]+"[^>]* hidden>[\s\S]*<\/header>/);
+  });
+
   test(`${seite}: Bilder haben Alt-Text`, () => {
     const ohne = (html[seite].match(/<img\b[^>]*>/g) || []).filter((t) => !/\salt="/.test(t));
     assert.deepEqual(ohne, []);

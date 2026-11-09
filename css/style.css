@@ -60,35 +60,36 @@
     --map-ours-stroke: #c9bfa9;
     --map-sea-text: #7d9bb8;
 
-    color-scheme: light dark;
+    color-scheme: light;
   }
 
   /* Dunkelmodus: eigene Palette auf Basis des Marineblaus der Fahne. Ohne sie dunkeln
-     Browser (Samsung Internet, Chrome) die Seite selbst ab – mit hellen Deichlinien und Braun-Grau. */
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --sand: #0d1626;
-      --sand-2: #1a2740;
-      --paper: #142036;
-      --ink: #e8edf5;
-      --muted: #a4b0c3;
-      --line: #2a3a55;
-      --blue: #8bbcf0;
-      --navy-2: #1d4a7a;
+     Browser (Samsung Internet, Chrome) die Seite selbst ab – mit hellen Deichlinien und Braun-Grau.
+     js/farbschema.js setzt data-farbschema (System-Vorgabe oder eigene Wahl über den Umschalter). */
+  :root[data-farbschema="dunkel"] {
+    color-scheme: dark;
 
-      --navy-text: #e8edf5;
-      --btn-bg: #1f5590;
-      --blue-surface: #2a64a8;
-      --tag-bg: #1b3354;
-      --scroll-thumb: rgb(232 237 245 / .35);
-      --filter-bg: rgb(13 22 38 / .94);
-      --map-sea: #0f2236;
-      --map-land: #1c2a40;
-      --map-ours: #2a3c58;
-      --map-stroke: #0d1626;
-      --map-ours-stroke: #4a6080;
-      --map-sea-text: #4f6f8f;
-    }
+    --sand: #0d1626;
+    --sand-2: #1a2740;
+    --paper: #142036;
+    --ink: #e8edf5;
+    --muted: #a4b0c3;
+    --line: #2a3a55;
+    --blue: #8bbcf0;
+    --navy-2: #1d4a7a;
+
+    --navy-text: #e8edf5;
+    --btn-bg: #1f5590;
+    --blue-surface: #2a64a8;
+    --tag-bg: #1b3354;
+    --scroll-thumb: rgb(232 237 245 / .35);
+    --filter-bg: rgb(13 22 38 / .94);
+    --map-sea: #0f2236;
+    --map-land: #1c2a40;
+    --map-ours: #2a3c58;
+    --map-stroke: #0d1626;
+    --map-ours-stroke: #4a6080;
+    --map-sea-text: #4f6f8f;
   }
 
   *, *::before, *::after { box-sizing: border-box; }
@@ -150,7 +151,8 @@
     gap: .5rem 2rem; padding-block: .9rem;
   }
   .site-header nav {
-    @media (max-width: 720px) { flex: 1 1 100%; min-width: 0; }
+    order: 1; margin-left: auto;
+    @media (max-width: 720px) { order: 2; flex: 1 1 100%; min-width: 0; }
     @media print { display: none !important; }
   }
   .brand {
@@ -177,6 +179,20 @@
     @media (max-width: 720px) { padding: .45rem .28rem; font-size: clamp(.74rem, 3.25vw, .92rem); white-space: nowrap; }
   }
   .nav a:hover { background: var(--sand); }
+
+  /* Umschalter Hell/Dunkel: Desktop rechts neben dem Menü, Handy rechts neben dem Logo */
+  .farbschema {
+    order: 2; display: grid; place-items: center; flex: none;
+    width: 2.4rem; height: 2.4rem; margin-left: -1.25rem; border-radius: 50%; cursor: pointer;
+    border: 1px solid var(--line); background: transparent; color: var(--ink);
+    @media (max-width: 720px) { order: 1; margin-left: 0; }
+    @media print { display: none !important; }
+  }
+  .farbschema:hover { background: var(--sand); }
+  .farbschema svg { width: 1.15rem; height: 1.15rem; fill: currentColor; stroke: currentColor; stroke-width: 2; stroke-linecap: round; }
+  .farbschema .i-mond { stroke: none; }
+  .farbschema .i-sonne, .farbschema[aria-pressed="true"] .i-mond { display: none; }
+  .farbschema[aria-pressed="true"] .i-sonne { display: block; }
   .nav a[aria-current="page"] {
     background: var(--btn-bg); color: #fff;
     @media (max-width: 720px) { padding-inline: .5rem; }
