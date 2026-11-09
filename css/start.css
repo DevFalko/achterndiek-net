@@ -25,7 +25,9 @@
   .hero-shade {
     background:
       linear-gradient(90deg, rgb(7 26 48 / .88) 0%, rgb(7 26 48 / .6) 50%, rgb(7 26 48 / .2) 100%),
-      linear-gradient(0deg, rgb(7 26 48 / .55), transparent 45%);
+      linear-gradient(0deg, rgb(7 26 48 / .55), transparent 45%),
+      /* etwas dunkler unten rechts, wo die Bildbeschriftung steht */
+      radial-gradient(ellipse 36rem 14rem at 100% 100%, rgb(7 26 48 / .65), transparent 75%);
     @media (max-width: 720px) { background: linear-gradient(0deg, rgb(7 26 48 / .9) 10%, rgb(7 26 48 / .55) 100%); }
   }
   .hero--video .wrap {
@@ -34,14 +36,16 @@
     @media (max-height: 780px) and (min-width: 721px) { padding-block: 2.5rem 6.5rem; }
     @media (max-height: 700px) and (max-width: 720px) { padding-block: 1.5rem 4.25rem; }
   }
-  .hero--video h1 { color: #fff; text-shadow: 0 2px 24px rgb(0 0 0 / .25); }
+  /* Schatten nur an der Schrift (kein dunklerer Schleier über dem Video): hält den Text
+     auch über hellen Videobildern lesbar */
+  .hero--video h1 { color: #fff; text-shadow: 0 1px 2px rgb(0 0 0 / .3), 0 2px 24px rgb(0 0 0 / .3); }
   .hero--video h1 span { color: var(--gold); }
-  .hero--video .kicker { color: var(--gold-soft); }
-  .hero--video .lead { color: #dde6f1; }
+  .hero--video .kicker { color: var(--gold-soft); text-shadow: 0 1px 3px rgb(0 0 0 / .45); }
+  .hero--video .lead { color: #dde6f1; text-shadow: 0 1px 3px rgb(0 0 0 / .45); }
   .hero-meta {
     position: absolute; right: 1rem; bottom: calc(clamp(48px, 7vw, 90px) + .75rem);
     display: flex; align-items: center; gap: .75rem;
-    font-size: .85rem; color: rgb(255 255 255 / .8);
+    font-size: .85rem; color: rgb(255 255 255 / .9); text-shadow: 0 1px 3px rgb(0 0 0 / .6);
   }
   .hero-meta span { @media (max-width: 720px) { display: none; } }
   .hero-caption { transition: opacity .25s ease; }

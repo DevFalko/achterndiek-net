@@ -62,7 +62,10 @@
 
   <div class="filter" id="filter" hidden>
     <div class="wrap">
-      <input type="search" id="q" placeholder="Ort oder Name suchen …" aria-label="Gruppen nach Ort oder Name durchsuchen">
+      <div class="suche">
+        <input type="search" id="q" placeholder="Ort oder Name suchen …" aria-label="Gruppen nach Ort oder Name durchsuchen">
+        <button class="naehe-btn" type="button" id="naehe-btn" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.6a2.6 2.6 0 1 1 0-5.2 2.6 2.6 0 0 1 0 5.2z"/></svg>In meiner Nähe</button>
+      </div>
       <button class="chip" type="button" data-gau="" aria-pressed="true">Alle</button>
       <button class="chip" type="button" data-gau="bremen" aria-pressed="false">Bremen</button>
       <button class="chip" type="button" data-gau="holsatia" aria-pressed="false">Holsatia</button>
@@ -72,6 +75,12 @@
   </div>
 
   <div class="wrap">
+    <section class="naehe" id="naehe" hidden aria-labelledby="naehe-h" tabindex="-1">
+      <h2 id="naehe-h">Gruppen in deiner Nähe</h2>
+      <p class="naehe-status" id="naehe-status" role="status"></p>
+      <ol class="naehe-liste" id="naehe-liste"></ol>
+    </section>
+
     <section class="map-box" id="karte-box" hidden aria-labelledby="karte-h">
       <div>
         <h2 id="karte-h">Unsere Gruppen auf der Karte</h2>
@@ -143,7 +152,7 @@
           <span class="note">Derzeit nur Älterenarbeit</span>
           <span class="place">Bremen-Osterholz</span>
           <span class="church">Ev. Trinitatisgemeinde, Ellener Brok</span>
-          <span class="hint">Kontakt über den Gau</span>
+          <span class="hint">Kontakt über den <a href="mailto:gaufue@cpd-bremen.de">Gau Bremen</a></span>
         </li>
         <li class="group" id="g-hermen-scroda" data-lat="53.0045" data-lon="8.8636">
           <span class="type">Neuanfang</span>
@@ -158,12 +167,14 @@
           <span class="note">Derzeit nur Älterenarbeit</span>
           <span class="place">Weyhe-Leeste</span>
           <span class="church">Kirchengemeinde Leeste</span>
+          <span class="hint">Kontakt über den <a href="mailto:gaufue@cpd-bremen.de">Gau Bremen</a></span>
         </li>
         <li class="group" id="g-heinrich-der-loewe" data-lat="53.04" data-lon="8.823">
           <span class="type">Stamm</span>
           <h3>Heinrich der Löwe</h3>
           <span class="note">Derzeit nur Älterenarbeit</span>
           <span class="place">Bremen-Kattenturm</span>
+          <span class="hint">Kontakt über den <a href="mailto:gaufue@cpd-bremen.de">Gau Bremen</a></span>
         </li>
       </ul>
     </section>
@@ -193,7 +204,7 @@
           <h3>Klaus Störtebeker</h3>
           <span class="place">Hamburg-Öjendorf</span>
           <span class="church">Jubilate-Gemeinde</span>
-          <span class="hint">Kontakt über den Gau</span>
+          <span class="hint">Kontakt über den <a href="https://gau-holsatia.de">Gau Holsatia</a></span>
         </li>
         <li class="group" id="g-carl-friedrich-gauss" data-lat="53.477" data-lon="10.286">
           <span class="type">Stamm</span>
@@ -207,12 +218,13 @@
           <h3>Leif Eriksson</h3>
           <span class="place">Hohenwestedt</span>
           <span class="church">Kirchengemeinde Peter-Paul</span>
-          <span class="hint">Kontakt über den Gau</span>
+          <span class="hint">Kontakt über den <a href="https://gau-holsatia.de">Gau Holsatia</a></span>
         </li>
         <li class="group">
           <span class="type type--old">Älterengruppe</span>
           <h3>Kreuzpfadfinderrunde m.eer21</h3>
           <span class="place">Hamburg &amp; Schleswig-Holstein</span>
+          <span class="hint">Kontakt über den <a href="https://gau-holsatia.de">Gau Holsatia</a></span>
         </li>
       </ul>
     </section>
@@ -241,14 +253,14 @@
           <span class="type">Stamm</span>
           <h3>Konsul Hackfeld</h3>
           <span class="place">Bremen-St. Magnus, Alt-Aumund &amp; Schwanewede-Löhnhorst</span>
-          <span class="hint">Kontakt über den Gau</span>
+          <span class="hint">Kontakt über den <a href="mailto:chauken@achterndiek.net">Gau Chauken</a></span>
         </li>
         <li class="group" id="g-weisse-rose" data-lat="53.17" data-lon="9.48">
           <span class="type">Stamm</span>
           <h3>Weiße Rose</h3>
           <span class="place">Scheeßel</span>
           <span class="church">Landkreis Rotenburg (Wümme)</span>
-          <span class="hint">Kontakt über den Gau</span>
+          <span class="hint">Kontakt über den <a href="mailto:chauken@achterndiek.net">Gau Chauken</a></span>
         </li>
         <li class="group" id="g-stoertebeker" data-lat="53.235" data-lon="7.455">
           <span class="type type--old">Jungmannschaft</span>
@@ -262,6 +274,7 @@
           <h3>Dietrich Bonhoeffer</h3>
           <span class="place">Bremervörde</span>
           <span class="church">St. Liborius Kirchengemeinde</span>
+          <span class="hint">Kontakt über den <a href="mailto:chauken@achterndiek.net">Gau Chauken</a></span>
         </li>
       </ul>
     </section>
@@ -298,7 +311,7 @@
           <h3>Mauritius</h3>
           <span class="note">Derzeit nur Älterenarbeit</span>
           <span class="place">Twistringen</span>
-          <span class="hint">Kontakt über den Gau</span>
+          <span class="hint">Kontakt über den <a href="mailto:weserland@achterndiek.net">Gau Weserland</a></span>
         </li>
         <li class="group" id="g-graf-von-hajo" data-lat="52.808" data-lon="9.144">
           <span class="type">Siedlung</span>

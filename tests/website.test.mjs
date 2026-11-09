@@ -186,6 +186,8 @@ test("Gruppen: jede Gruppe hat einen Namen, Kartenpunkte liegen in Norddeutschla
     const id = alle(/id="([^"]+)"/g, g)[0] ?? alle(/<h3>([^<]+)<\/h3>/g, g)[0];
     assert.match(g, /<h3>[^<]+<\/h3>/, `${id}: Name fehlt`);
     assert.match(g, /class="place"/, `${id}: Ort fehlt`);
+    // Jede Gruppe ist direkt erreichbar: eigener Link oder klickbarer Verweis auf Gau/Landesmark
+    assert.match(g, /class="(links|hint)">[^]*?<a href=/, `${id}: kein Kontaktlink`);
     if (!g.includes("data-lat")) continue; // überregionale Runden ohne Kartenpunkt
     const lat = Number(alle(/data-lat="([^"]+)"/g, g)[0]);
     const lon = Number(alle(/data-lon="([^"]+)"/g, g)[0]);
