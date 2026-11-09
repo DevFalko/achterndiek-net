@@ -12,10 +12,13 @@
   .hero h1 span { color: var(--blue); }
   .hero .dike { position: absolute; bottom: -1px; left: 0; }
 
+  /* Höhe so, dass beim ersten Blick die ganze Deichlinie samt Zelten zu sehen ist:
+     sichtbare Höhe (svh, ohne Browserleisten) minus Kopfleiste minus ein Streifen Blau. */
   .hero--video {
     background: var(--navy); color: #fff;
-    min-height: min(86vh, 780px); display: flex; align-items: center;
-    @media (max-width: 720px) { min-height: 88vh; }
+    min-height: min(80vh, 780px); min-height: min(calc(100svh - 6.5rem), 780px);
+    display: flex; align-items: center;
+    @media (max-width: 720px) { min-height: 76vh; min-height: calc(100svh - 8rem); }
   }
   .hero-video, .hero-shade { position: absolute; inset: 0; width: 100%; height: 100%; }
   .hero-video { object-fit: cover; }
@@ -25,7 +28,12 @@
       linear-gradient(0deg, rgb(7 26 48 / .55), transparent 45%);
     @media (max-width: 720px) { background: linear-gradient(0deg, rgb(7 26 48 / .9) 10%, rgb(7 26 48 / .55) 100%); }
   }
-  .hero--video .wrap { position: relative; grid-template-columns: minmax(0, 46rem); }
+  .hero--video .wrap {
+    position: relative; grid-template-columns: minmax(0, 46rem);
+    /* niedrige Fenster (Laptop 720 px, kleine Handys): weniger Luft, damit der Deich noch reinpasst */
+    @media (max-height: 780px) and (min-width: 721px) { padding-block: 2.5rem 6.5rem; }
+    @media (max-height: 700px) and (max-width: 720px) { padding-block: 1.5rem 4.25rem; }
+  }
   .hero--video h1 { color: #fff; text-shadow: 0 2px 24px rgb(0 0 0 / .25); }
   .hero--video h1 span { color: var(--gold); }
   .hero--video .kicker { color: var(--gold-soft); }
