@@ -218,12 +218,15 @@
   }
   .subnav a[aria-current="page"] { background: var(--blue-surface); border-color: var(--blue-surface); color: #fff; }
 
-  /* Wasser links, Deich, Land rechts – Farbe = Hintergrund der folgenden Sektion */
+  /* Wellen links, Deich, Kothe und Jurte rechts – Farbe = Hintergrund der folgenden Sektion.
+     Höhe folgt dem viewBox-Verhältnis (1440:110), damit nichts verzerrt; auf schmalen
+     Schirmen schneidet „xMaxYMax slice“ links Wasser ab, Deich und Zelte bleiben sichtbar. */
   .dike {
-    display: block; width: 100%; height: clamp(48px, 7vw, 90px);
+    display: block; width: 100%; height: clamp(56px, 7.64vw, 150px);
     @media print { display: none !important; }
   }
   .dike path { fill: var(--sand); }
+  .dike .dike-welle { opacity: .45; }
   .dike--navy path { fill: var(--navy); }
 
   /* ---------- Sektionen und Raster ---------- */
