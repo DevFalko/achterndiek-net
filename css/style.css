@@ -225,10 +225,15 @@
 
   /* ---------- Seitenkopf Unterseiten, Unternavigation, Deichlinie ---------- */
   .page-head { background: var(--paper); position: relative; }
-  .page-head .wrap { padding-block: clamp(2.5rem, 6vw, 4.5rem) clamp(4rem, 8vw, 6rem); }
+  .page-head .wrap { padding-block: clamp(2.5rem, 6vw, 4.5rem) clamp(4rem, 8vw, 6rem); position: relative; z-index: 1; }
   .page-head h1 { font-size: clamp(2.4rem, 6vw, 4rem); }
-  .page-head .dike { position: absolute; bottom: -1px; left: 0; }
+  .page-head .dike { position: absolute; bottom: -1px; left: 0; pointer-events: none; }
 
+  /* Seiten mit Unternavigation (Über uns / Ältere / CPD): Einleitung reserviert 4 Zeilen,
+     damit Knöpfe und Sektionen beim Wechseln zwischen den Tabs nicht springen. */
+  .lead:has(+ .subnav) {
+    @media (min-width: 721px) { min-height: 4lh; }
+  }
   .subnav { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: 1.75rem; }
   .subnav a {
     padding: .5rem 1rem; border-radius: 999px; border: 1px solid var(--line);
