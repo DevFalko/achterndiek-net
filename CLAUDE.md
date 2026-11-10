@@ -31,4 +31,3 @@ Website der CPD-Landesmark Achter'n Diek (achterndiek.net) – siehe README.md.
 - Content-Security-Policy in jeder Seite (siehe `docs/SECURITY.md`): **keine** `style="…"`-Attribute,
   `<style>`-Blöcke, Inline-Skripte oder `onclick=…` – Styles als Klasse in `css/style.css`, Code in `js/`.
 - Originale liegen in `assets/` und gehören **nicht** ins Repo (`.gitignore`).
-- Commits mit `user.email = falko@huebtech.de`.
