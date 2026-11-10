@@ -67,6 +67,7 @@ Die verbindlichen Regeln stehen in [CLAUDE.md](CLAUDE.md). Kurzfassung:
 - [ ] Neue Fotos: Vorschau mit `npm run fotos -- --vorschau <name>` kontrolliert, jedes
       Gesicht verpixelt, Ergebnis in voller Größe angesehen
 - [ ] Keine Namen, privaten Adressen oder Telefonnummern
+- [ ] Neue E-Mail-Links: `npm run emails` ausgeführt (keine Adressen im Klartext, siehe README)
 - [ ] Keine externen Ressourcen (Schriften, Skripte, Bilder, iframes)
 - [ ] Neue oder umbenannte Seite: Checkliste in [docs/SEO.md](docs/SEO.md#6-pflege-checkliste-bei-änderungen)
       (Titel, Beschreibung, Canonical, Open Graph, `sitemap.xml`)
