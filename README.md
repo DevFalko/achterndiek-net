@@ -30,6 +30,7 @@ Live: <https://achterndiek.net> · gehostet mit GitHub Pages
 | `css/start.css`, `css/gruppen.css` | Nur Startseite bzw. Gruppenseite (Video-Hero, Bildband, Galerie / Filter, Karte) |
 | `js/gruppen.js` | Filter und Karte der Gruppenseite |
 | `js/hero.js` | Steuerung des Hintergrundvideos |
+| `js/mail.js` | Setzt die kodierten E-Mail-Links zusammen (Schutz vor Scrapern) |
 | `img/` | Fahnen, Logo, Karte (`karte.svg`), Fotos (`img/foto/`) |
 | `video/` | Hintergrundvideo (Ausschnitt, komprimiert) |
 | `fonts/` | Lokale Schriften (Bricolage Grotesque, Source Sans 3) |
@@ -62,6 +63,8 @@ Die Tests liegen in `tests/` und laufen ohne Zusatzpakete (Node-Testrunner):
   veröffentlichten Bild wirklich verpixelt; keine Metadaten (EXIF/GPS). Liegen die Originale in
   `assets/`, wird zusätzlich alles neu erzeugt und mit den Bildern im Repo verglichen – wichtig
   nach einem sharp-Update.
+- **`emails.test.mjs`** – keine E-Mail-Adressen im Klartext im HTML, `js/mail.js` eingebunden
+  und setzt die Links korrekt zusammen
 - **`server.test.mjs`** – lokale Vorschau liefert Adressen ohne `.html` wie GitHub Pages
 - **`security.test.mjs`** – Content-Security-Policy in jeder Seite, keine Inline-Styles/-Skripte,
   Karte ohne ausführbaren Inhalt, sichere Workflows
@@ -89,6 +92,24 @@ In `gruppen.html` im passenden Gau einen Eintrag ergänzen:
 - Ohne Kontakt: `<span class="hint">Kontakt über den Gau</span>`.
 - Nur Älterenarbeit: `<span class="note">Derzeit nur Älterenarbeit</span>` unter dem Namen.
 - Nur Funktionsadressen verwenden, keine privaten.
+- Danach `npm run emails` ausführen (siehe unten).
+
+### E-Mail-Adressen eintragen
+
+Adressen stehen im HTML nicht im Klartext, damit Scraper sie nicht einsammeln. Neue Adressen
+ganz normal als `<a href="mailto:…">…</a>` eintragen (gern mit `?subject=…`) und dann:
+
+```bash
+npm run emails             # stellt alle mailto:-Links kodiert um und bindet js/mail.js ein
+npm run emails -- --pruefen  # ändert nichts, meldet nur Adressen im Klartext
+```
+
+Aus `<a href="mailto:x@y.de">x@y.de</a>` wird
+`<a href="kontakt" data-mail="…"><span class="mail-text">x (at) y.de</span></a>`. Im Browser
+setzt `js/mail.js` daraus wieder den echten Link und die Adresse zusammen; ohne JavaScript führt
+der Link zur Kontaktseite. Der Test `emails.test.mjs` schlägt fehl, solange irgendwo noch eine
+Adresse im Klartext steht. (Bots, die JavaScript ausführen, finden die Adressen trotzdem – gegen
+einfache Scraper hilft es aber zuverlässig.)
 
 ### Fotos hinzufügen
 

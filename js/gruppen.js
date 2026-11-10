@@ -213,6 +213,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // ---------- Mail-Vorlagen ----------
   // Mail-Links an Gruppen (und an den Gau für eine Gruppe) öffnen mit Betreff und kurzer Vorlage.
+  // Die mailto:-Adressen setzt js/mail.js – es muss deshalb vor dieser Datei eingebunden sein.
   document.querySelectorAll('.group a[href^="mailto:"]').forEach((a) => {
     const li = a.closest(".group");
     const name = `${li.querySelector(".type").textContent} ${li.querySelector("h3").textContent}`;
