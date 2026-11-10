@@ -227,6 +227,8 @@
   .page-head { background: var(--paper); position: relative; }
   .page-head .wrap { padding-block: clamp(2.5rem, 6vw, 4.5rem) clamp(4rem, 8vw, 6rem); position: relative; z-index: 1; }
   .page-head h1 { font-size: clamp(2.4rem, 6vw, 4rem); }
+  /* zweiteilige Überschrift: Thema dunkel, Aussage blau in eigener Zeile (wie auf der Startseite) */
+  .page-head h1 span { display: block; color: var(--blue); }
   .page-head .dike { position: absolute; bottom: -1px; left: 0; }
 
   /* Seiten mit Unternavigation (Über uns / Ältere / CPD): Einleitung reserviert 4 Zeilen,
