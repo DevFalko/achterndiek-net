@@ -303,7 +303,7 @@
   .myth-claim {
     font-size: 1.25rem; color: var(--muted);
     /* dünner Strich, damit der Satz trotzdem gut lesbar bleibt */
-    text-decoration: line-through; text-decoration-color: rgb(242 181 28 / .8); text-decoration-thickness: .055em;
+    text-decoration: line-through; text-decoration-color: rgb(242, 28, 28); text-decoration-thickness: .125em;
     margin-bottom: 1.1rem;
   }
   .myth-label--real { color: var(--blue); margin-top: auto; padding-top: 1rem; border-top: 1px dashed var(--line); }
