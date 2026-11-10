@@ -1,7 +1,7 @@
 // E-Mail-Adressen vor Scrapern verbergen: macht aus jedem mailto:-Link im HTML einen
 // kodierten Link, den erst js/mail.js im Browser wieder zusammensetzt.
 //
-// Aufruf:  npm run emails                (alle *.html im Hauptordner umstellen)
+// Aufruf:  npm run emails                (alle *.html im Hauptordner umstellen, außer AUSNAHMEN)
 //          npm run emails -- --pruefen   (nichts ändern, nur Klartext-Adressen melden)
 //
 // Neue Adresse eintragen: ganz normal <a href="mailto:…">…</a> schreiben, dann `npm run emails`.
@@ -11,6 +11,10 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
 export const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
+
+/** Seiten, auf denen Adressen bewusst im Klartext stehen: Im Impressum muss eine E-Mail-Adresse
+ *  ohne Umwege erreichbar sein (§ 5 DDG), dort also nicht kodieren. */
+export const AUSNAHMEN = ["impressum.html"];
 
 /** Kodiert bzw. dekodiert (beides dasselbe): Zeichen umdrehen, Buchstaben um 13 verschieben. */
 export const kodiere = (s) =>
@@ -46,7 +50,7 @@ export function umstellen(html) {
 
 async function main() {
   const pruefen = process.argv.includes("--pruefen");
-  const seiten = (await readdir(ROOT)).filter((f) => f.endsWith(".html")).sort();
+  const seiten = (await readdir(ROOT)).filter((f) => f.endsWith(".html") && !AUSNAHMEN.includes(f)).sort();
   let funde = 0;
   for (const f of seiten) {
     const alt = await readFile(join(ROOT, f), "utf8");

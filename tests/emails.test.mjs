@@ -4,10 +4,10 @@ import assert from "node:assert/strict";
 import { readFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 import vm from "node:vm";
-import { ROOT, kodiere, umstellen, KLARTEXT } from "../scripts/emails.mjs";
+import { ROOT, AUSNAHMEN, kodiere, umstellen, KLARTEXT } from "../scripts/emails.mjs";
 
 const lies = (f) => readFileSync(join(ROOT, f), "utf8");
-const seiten = readdirSync(ROOT).filter((f) => f.endsWith(".html")).sort();
+const seiten = readdirSync(ROOT).filter((f) => f.endsWith(".html") && !AUSNAHMEN.includes(f)).sort();
 
 for (const seite of seiten) {
   test(`${seite}: keine E-Mail-Adressen im Klartext`, () => {
@@ -20,6 +20,12 @@ for (const seite of seiten) {
     }
   });
 }
+
+test("Impressum: E-Mail-Adresse im Klartext und als echter mailto:-Link", () => {
+  const s = lies("impressum.html");
+  assert.match(s, /<a href="mailto:deichgraf@achterndiek\.net">deichgraf@achterndiek\.net<\/a>/);
+  assert.doesNotMatch(s, /data-mail=/);
+});
 
 test("Kodierung: zweimal angewendet ergibt wieder das Original", () => {
   const ziel = "deichgraf@achterndiek.net?subject=kreuz%20%26%20quer";

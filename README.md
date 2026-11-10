@@ -96,7 +96,9 @@ In `gruppen.html` im passenden Gau einen Eintrag ergänzen:
 
 ### E-Mail-Adressen eintragen
 
-Adressen stehen im HTML nicht im Klartext, damit Scraper sie nicht einsammeln. Neue Adressen
+Adressen stehen im HTML nicht im Klartext, damit Scraper sie nicht einsammeln. Ausnahme ist das
+Impressum: Die Pflichtangaben bleiben dort als normaler `mailto:`-Link stehen (`AUSNAHMEN` in
+`scripts/emails.mjs`). Neue Adressen
 ganz normal als `<a href="mailto:…">…</a>` eintragen (gern mit `?subject=…`) und dann:
 
 ```bash

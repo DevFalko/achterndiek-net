@@ -25,6 +25,7 @@ Website der CPD-Landesmark Achter'n Diek (achterndiek.net) – siehe README.md.
 - Einzige Ausnahme: die gesetzlichen Pflichtangaben im Impressum (Angaben der CPD e.V.).
 - E-Mail-Adressen nie im Klartext ins HTML: als `mailto:`-Link eintragen und `npm run emails`
   ausführen (kodiert sie, `js/mail.js` setzt sie im Browser zusammen). Nicht in JSON-LD o. Ä.
+  Ausnahme: `impressum.html` – dort bleiben die Adressen im Klartext (Pflichtangabe).
 
 ## Technik
 
