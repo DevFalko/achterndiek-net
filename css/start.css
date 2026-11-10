@@ -43,7 +43,8 @@
   .hero--video .kicker { color: var(--gold-soft); text-shadow: 0 1px 3px rgb(0 0 0 / .45); }
   .hero--video .lead { color: #dde6f1; text-shadow: 0 1px 3px rgb(0 0 0 / .45); }
   .hero-meta {
-    position: absolute; right: 1rem; bottom: calc(clamp(48px, 7vw, 90px) + .75rem);
+    /* über der Deichlinie (Höhe wie .dike in style.css), nicht darauf */
+    position: absolute; z-index: 1; right: 1rem; bottom: calc(clamp(56px, 7.64vw, 150px) + .75rem);
     display: flex; align-items: center; gap: .75rem;
     font-size: .85rem; color: rgb(255 255 255 / .9); text-shadow: 0 1px 3px rgb(0 0 0 / .6);
   }

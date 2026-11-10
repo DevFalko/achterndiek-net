@@ -227,7 +227,7 @@
   .page-head { background: var(--paper); position: relative; }
   .page-head .wrap { padding-block: clamp(2.5rem, 6vw, 4.5rem) clamp(4rem, 8vw, 6rem); position: relative; z-index: 1; }
   .page-head h1 { font-size: clamp(2.4rem, 6vw, 4rem); }
-  .page-head .dike { position: absolute; bottom: -1px; left: 0; pointer-events: none; }
+  .page-head .dike { position: absolute; bottom: -1px; left: 0; }
 
   /* Seiten mit Unternavigation (Über uns / Ältere / CPD): Einleitung reserviert 4 Zeilen,
      damit Knöpfe und Sektionen beim Wechseln zwischen den Tabs nicht springen. */
@@ -244,8 +244,10 @@
   /* Wellen links, Deich, Kothe und Jurte rechts – Farbe = Hintergrund der folgenden Sektion.
      Höhe folgt dem viewBox-Verhältnis (1440:110), damit nichts verzerrt; auf schmalen
      Schirmen schneidet „xMaxYMax slice“ links Wasser ab, Deich und Zelte bleiben sichtbar. */
+  /* Die Grafik ist reine Deko und liegt am unteren Rand über dem Inhalt: Klicks gehen durch,
+     damit Knöpfe darunter (Unternavigation, Video-Pause) bedienbar bleiben. */
   .dike {
-    display: block; width: 100%; height: clamp(56px, 7.64vw, 150px);
+    display: block; width: 100%; height: clamp(56px, 7.64vw, 150px); pointer-events: none;
     @media print { display: none !important; }
   }
   .dike path { fill: var(--sand); }
@@ -307,8 +309,9 @@
   }
   .myth-claim {
     font-size: 1.25rem; color: var(--muted);
-    /* dünner Strich, damit der Satz trotzdem gut lesbar bleibt */
-    text-decoration: line-through; text-decoration-color: rgb(242, 28, 28); text-decoration-thickness: .125em;
+    /* roter Strich als klares „stimmt nicht“; etwas gedeckt und halbtransparent,
+       damit der Satz darunter lesbar bleibt */
+    text-decoration: line-through; text-decoration-color: rgb(204 41 41 / .85); text-decoration-thickness: .125em;
     margin-bottom: 1.1rem;
   }
   .myth-label--real { color: var(--blue); margin-top: auto; padding-top: 1rem; border-top: 1px dashed var(--line); }
