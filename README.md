@@ -25,6 +25,7 @@ Live: <https://achterndiek.net> · gehostet mit GitHub Pages
 | `ueber-uns.html` | Landesmark, Chronik, Landesmark-Lied, Deichrat |
 | `aeltere.html` | Ältere & Ehemalige, Kreuzpfadfinder, kreuz & quer |
 | `cpd.html` | Die CPD (Bund, Bundeshof, Aktionen, Schulung) |
+| `fahrtenziele.html` | Häuser und Zeltplätze für Fahrt und Lager (Bundeshof, Häuser in der Region, Buchungstipps) |
 | `kontakt.html`, `impressum.html`, `datenschutz.html`, `404.html` | |
 | `css/style.css` | Styling aller Seiten (Farben als CSS-Variablen in `:root`, Aufbau im Dateikopf) |
 | `css/start.css`, `css/gruppen.css` | Nur Startseite bzw. Gruppenseite (Video-Hero, Bildband, Galerie / Filter, Karte) |
@@ -93,6 +94,14 @@ In `gruppen.html` im passenden Gau einen Eintrag ergänzen:
 - Nur Älterenarbeit: `<span class="note">Derzeit nur Älterenarbeit</span>` unter dem Namen.
 - Nur Funktionsadressen verwenden, keine privaten.
 - Danach `npm run emails` ausführen (siehe unten).
+
+### Fahrtenziel hinzufügen
+
+In `fahrtenziele.html` unter „In der Region“ eine Karte nach dem Muster der vorhandenen ergänzen
+(`article.card.ziel` mit Typ · Träger, Name, Ort, kurzer Beschreibung, 3–5 Merkmalen und Link zur
+Website des Hauses). Nur Angaben übernehmen, die auf der offiziellen Seite des Hauses stehen; keine
+Preise (ändern sich), keine Namen oder Telefonnummern von Ansprechpartnern – auf die Buchungsseite
+des Hauses verlinken. Danach das „Stand“-Datum unter den Karten anpassen.
 
 ### E-Mail-Adressen eintragen
 
